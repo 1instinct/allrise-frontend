@@ -13,6 +13,7 @@ export const Container = styled.div`
   min-height: 100vh;
   background: url("/images/allrise/law-pattern.png"),
     linear-gradient(196.13deg, #ffda17 -16.74%, #f7be56 89.04%);
+  background-attachment: fixed;
 `;
 
 export const ProductImage = styled.img`
@@ -153,6 +154,10 @@ export const ProductLinks = styled.div`
   align-items: space-around;
   width: 50%;
   margin: 20px auto;
+
+  @media screen and (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+    width: 100%;
+  }
 `;
 
 export const ProductLink = styled.a`
