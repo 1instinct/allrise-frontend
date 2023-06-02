@@ -128,7 +128,7 @@ class MyDocument extends Document {
           {/* CHANGEME */}
           <meta
             property="og:image"
-            content={`${process.env.NEXT_PUBLIC_SITE_URL}/images/open-graph-allrise.jpg`}
+            content={`${process.env.NEXT_PUBLIC_SITE_URL}/images/allrise/open-graph-allrise.jpg`}
           />
           <meta property="og:image:width" content="600" />
           <meta property="og:image:height" content="529" />
