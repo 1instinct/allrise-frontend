@@ -5,11 +5,8 @@ import { saturate } from "polished";
 export const GlobalStyles = ({ theme, children }: any) => (
   <Global
     styles={
-      css`
-        @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
-
+      css(`
         html {
-          /* overflow: hidden; */
           width: 100%;
           height: 100%;
         }
@@ -20,7 +17,7 @@ export const GlobalStyles = ({ theme, children }: any) => (
           width: 100%;
           height: 100%;
           text-rendering: auto;
-          // -webkit-font-smoothing: antialiased;
+          -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
           font-display: swap;
           font-smooth: 2em;
@@ -32,7 +29,6 @@ export const GlobalStyles = ({ theme, children }: any) => (
         }
 
         ::-moz-selection {
-          /* Code for Firefox */
           color: ${theme.colors.white.primary};
           background: ${theme.colors.brand.primary};
         }
@@ -117,9 +113,9 @@ export const GlobalStyles = ({ theme, children }: any) => (
           color: ${theme.isDarkMode
             ? theme.colors.white.primary
             : theme.colors.black.primary};
-          font-family: ${(p: any) => p.theme.typography.bodySM.fontFamily};
-          font-weight: ${(p: any) => p.theme.typography.bodySM.fontWeight};
-          font-size: ${(p: any) => p.theme.typography.bodySM.fontSize};
+          font-family: ${theme.typography.bodySM.fontFamily};
+          font-weight: ${theme.typography.bodySM.fontWeight};
+          font-size: ${theme.typography.bodySM.fontSize};
           margin-right: 82px !important;
         }
         .pc-menu-wrap {
@@ -135,7 +131,7 @@ export const GlobalStyles = ({ theme, children }: any) => (
               : theme.colors.black.primary} !important;
           }
         }
-      ` as SerializedStyles
+      `) as SerializedStyles
     }
   />
 );
