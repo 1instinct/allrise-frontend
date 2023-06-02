@@ -9,10 +9,10 @@ classnames
 **all props of the component**
 
 1. animationType - (it can be one of slide stack elastic bubble push pushRotate scaleDown scaleRotate fallDown reveal)
-pageWrapId - the id of the element wrapping the rest of content on your page
-(except elements with fixed positioning),placed after the component
-example:
-<MainMenu pageWrapId="page-wrap" />
+   pageWrapId - the id of the element wrapping the rest of content on your page
+   (except elements with fixed positioning),placed after the component
+   example:
+   <MainMenu pageWrapId="page-wrap" />
 
 <main id="page-wrap">
 .
@@ -21,7 +21,7 @@ example:
 </main>
 
 2. outerContainerId - the id of the element containing everything,including the menu component
-example:
+   example:
 
 <div id="outer-container">
 <MainMenu pageWrapId="page-wrap" outerContainerId="outer-container" />
