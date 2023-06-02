@@ -32,18 +32,18 @@ export const GlobalStyles = ({ theme, children }: any) => (
 
       ::-moz-selection {
         /* Code for Firefox */
-        color: ${theme.colors.white.primary};
+        color: ${theme.colors.black.primary};
         background: ${theme.colors.brand.primary};
       }
 
       ::selection {
-        color: ${theme.colors.white.primary};
+        color: ${theme.colors.black.primary};
         background: ${theme.colors.brand.primary};
       }
 
       a {
         cursor: pointer;
-        color: ${theme.colors.brand.primary};
+        color: ${theme.colors.black.primary};
       }
 
       p {

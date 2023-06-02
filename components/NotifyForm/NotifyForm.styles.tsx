@@ -12,10 +12,10 @@ export const Container = styled.div`
 export const NotifyText = styled.div`
   text-align: center;
   width: 100%;
-  font-family: ${(p: any) => p.theme.typography.bodyXS.fontFamily};
-  font-weight: ${(p: any) => p.theme.typography.bodyXS.fontWeight};
-  font-size: ${(p: any) => p.theme.typography.bodyXS.fontSize};
-  line-height: ${(p: any) => p.theme.typography.bodyXS.lineHeight};
+  font-family: ${(p: any) => p.theme.typography.bodyMD.fontFamily};
+  font-weight: ${(p: any) => p.theme.typography.bodyMD.fontWeight};
+  font-size: ${(p: any) => p.theme.typography.bodyMD.fontSize};
+  line-height: ${(p: any) => p.theme.typography.bodyMD.lineHeight};
   margin: 10px auto;
   color: ${(p) =>
     p.theme.isDarkMode
@@ -137,10 +137,10 @@ export const Button = styled.button`
 export const MailTo = styled.a`
   text-decoration: none;
   text-align: center;
-  font-family: ${(p: any) => p.theme.typography.bodyXS.fontFamily};
-  font-weight: ${(p: any) => p.theme.typography.bodyXS.fontWeight};
-  font-size: ${(p: any) => p.theme.typography.bodyXS.fontSize};
-  line-height: ${(p: any) => p.theme.typography.bodyXS.lineHeight};
+  font-family: ${(p: any) => p.theme.typography.bodyMD.fontFamily};
+  font-weight: ${(p: any) => p.theme.typography.bodyMD.fontWeight};
+  font-size: ${(p: any) => p.theme.typography.bodyMD.fontSize};
+  line-height: ${(p: any) => p.theme.typography.bodyMD.lineHeight};
   color: ${(p: any) =>
     p.theme.isDarkMode
       ? p.theme.colors.white.primary
@@ -148,6 +148,6 @@ export const MailTo = styled.a`
   padding-top: 25px;
   bottom: 0;
   &:hover {
-    color: ${(p: any) => p.theme.colors.brand.primary};
+    text-decoration: underline;
   }
 `;

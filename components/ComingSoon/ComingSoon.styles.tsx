@@ -3,6 +3,33 @@ import { transparentize } from "polished";
 import { ButtonBack, ButtonNext } from "pure-react-carousel";
 import { Slider, Slide, ImageWithZoom } from "pure-react-carousel";
 
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  min-height: 100vh;
+  background: url("/images/allrise/law-pattern.png"), linear-gradient(196.13deg, #FFDA17 -16.74%, #F7BE56 89.04%);
+`;
+
+export const ProductImage = styled.img`
+  width: 33%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  margin: 0 auto;
+  display: block;
+  margin-bottom: -100px;
+
+  @media screen and (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+    width: 100%;
+    height: auto;
+    margin-bottom: -150px;
+  }
+`;
+
 export const ProductImageCarousel = styled.div`
   position: fixed;
   width: 100%;
@@ -67,23 +94,9 @@ export const CarouselNextButton = styled(ButtonNext)`
   }
 `;
 
-export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  width: auto;
-  min-height: 100vh;
-  background-color: ${(p) =>
-    p.theme.isDarkMode
-      ? p.theme.colors.black.primary
-      : p.theme.colors.white.primary};
-`;
-
 export const Logo = styled.img`
   width: auto;
-  height: 240px;
+  height: 85px;
 
   @media screen and (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
     width: 90%;
@@ -103,16 +116,54 @@ export const LogoText = styled.div`
   margin: 40px 0 20px 0;
 `;
 
-export const Text = styled.div`
+export const Tagline = styled.div`
   text-align: center;
   width: 425px;
-  top: 400px;
-  font-family: ${(p: any) => p.theme.typography.titleMD.fontFamily};
-  font-weight: ${(p: any) => p.theme.typography.titleMD.fontWeight};
-  font-size: ${(p: any) => p.theme.typography.titleMD.fontSize};
-  line-height: ${(p: any) => p.theme.typography.titleMD.lineHeight};
+  font-family: ${(p: any) => p.theme.typography.titleSM.fontFamily};
+  font-weight: ${(p: any) => p.theme.typography.titleSM.fontWeight};
+  font-size: ${(p: any) => p.theme.typography.titleSM.fontSize};
+  line-height: ${(p: any) => p.theme.typography.titleSM.lineHeight};
+  text-transform: uppercase;
   color: ${(p: any) =>
     p.theme.isDarkMode
       ? p.theme.colors.white.primary
       : p.theme.colors.black.primary};
+`;
+
+export const Text = styled.div`
+  text-align: center;
+  width: 425px;
+  font-family: ${(p: any) => p.theme.typography.specialMD.fontFamily};
+  font-weight: ${(p: any) => p.theme.typography.specialMD.fontWeight};
+  font-size: ${(p: any) => p.theme.typography.specialMD.fontSize};
+  line-height: ${(p: any) => p.theme.typography.specialMD.lineHeight};
+  text-transform: uppercase;
+  color: ${(p: any) =>
+    p.theme.isDarkMode
+      ? p.theme.colors.white.primary
+      : p.theme.colors.black.primary};
+`;
+
+export const ProductLinks = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: space-around;
+  width: 50%;
+  margin: 20px auto;
+`;
+
+export const ProductLink = styled.a`
+  width: 100%;
+  margin: 0 10px 0 5px;
+  &:first-of-type {
+    margin: 0 5px 0 10px;
+  }
+`;
+
+export const ProductLinkImg = styled.img`
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  margin: 0 auto;
 `;
