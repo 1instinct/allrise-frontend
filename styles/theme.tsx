@@ -192,7 +192,7 @@ export const theme = {
       fontSize: "10px",
       lineHeight: "0.9rem",
       color: "#000"
-    },
+    }
   },
   breakpoints: {
     values: {

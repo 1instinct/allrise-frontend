@@ -11,7 +11,8 @@ export const Container = styled.div`
   align-items: center;
   width: auto;
   min-height: 100vh;
-  background: url("/images/allrise/law-pattern.png"), linear-gradient(196.13deg, #FFDA17 -16.74%, #F7BE56 89.04%);
+  background: url("/images/allrise/law-pattern.png"),
+    linear-gradient(196.13deg, #ffda17 -16.74%, #f7be56 89.04%);
 `;
 
 export const ProductImage = styled.img`
