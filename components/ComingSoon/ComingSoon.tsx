@@ -124,7 +124,10 @@ export const ComingSoon = () => {
   return (
     <>
       <Container>
-        <ProductImage src="/images/allrise/allrise-trio.png" alt="All Rise! Phones" />
+        <ProductImage
+          src="/images/allrise/allrise-trio.png"
+          alt="All Rise! Phones"
+        />
         {logoPath ? (
           <Logo src={logoPath} />
         ) : siteTitle ? (
@@ -149,14 +152,20 @@ export const ComingSoon = () => {
         )}
         {siteDesc !== "" && <Text>{siteDesc}</Text>}
         <ProductLinks>
-          <ProductLink href="https://apps.apple.com/us/app/all-rise/id1662328976" target="_blank">
+          <ProductLink
+            href="https://apps.apple.com/us/app/all-rise/id1662328976"
+            target="_blank"
+          >
             <ProductLinkImg src="/images/app-store.png" />
           </ProductLink>
-          <ProductLink href="https://play.google.com/store/apps/details?id=com.allrise.YouJudge" target="_blank">
+          <ProductLink
+            href="https://play.google.com/store/apps/details?id=com.allrise.YouJudge"
+            target="_blank"
+          >
             <ProductLinkImg src="/images/play-store.png" />
           </ProductLink>
         </ProductLinks>
-        
+
         <NotifyForm />
         <SocialLinks />
         {isSlideshow && (
