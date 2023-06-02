@@ -5,6 +5,7 @@ import { dehydrate } from "react-query/hydration";
 import { useMutation, useQueryClient } from "react-query";
 import { fetchProducts, useProducts } from "../../hooks";
 import { ArrowBack, ArrowForward } from "@material-ui/icons";
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import { CarouselProvider, Slider } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
 
@@ -28,14 +29,15 @@ import {
   ProductLinkImg
 } from "./ComingSoon.styles";
 
-const siteTitle = process.env.SITE_TITLE || "";
-const siteDesc = process.env.SITE_DESC || "";
-const logoPath = process.env.LOGO_PATH;
-const previewMode = process.env.IS_PREVIEW_MODE === "true" ? true : false;
-const comingSoonText = process.env.COMING_SOON_TEXT || "";
-const mailerUrl = process.env.MAILCHIMP_URL || "";
-const mailerId = process.env.MAILCHIMP_ID || "";
-const mailerUser = process.env.MAILCHIMP_U || "";
+const siteTitle = process.env.NEXT_PUBLIC_SITE_TITLE || "";
+const siteDesc = process.env.NEXT_PUBLIC_SITE_DESC || "";
+const logoPath = process.env.NEXT_PUBLIC_LOGO_PATH;
+const previewMode =
+  process.env.NEXT_PUBLIC_IS_PREVIEW_MODE === "true" ? true : false;
+const comingSoonText = process.env.NEXT_PUBLIC_COMING_SOON_TEXT || "";
+const mailerUrl = process.env.NEXT_PUBLIC_MAILCHIMP_URL || "";
+const mailerId = process.env.NEXT_PUBLIC_MAILCHIMP_ID || "";
+const mailerUser = process.env.NEXT_PUBLIC_MAILCHIMP_U || "";
 
 export const ComingSoon = () => {
   const mailChimpUrl = `${mailerUrl}?u=${mailerId}&id=${mailerUser}`;
@@ -56,7 +58,7 @@ export const ComingSoon = () => {
     isSuccess: boolean;
   } = useProducts(1);
 
-  const renderProductImgs = useCallback(() => {
+  const renderProductSlides = useCallback(() => {
     return productsData.data.map((i: any) => {
       const productImg = i.relationships?.images?.data[0]?.id;
       const allImages = productsData
@@ -67,10 +69,12 @@ export const ComingSoon = () => {
         : undefined;
       const imgUrl =
         foundImg !== undefined ? foundImg[0]?.attributes?.styles[4]?.url : "";
-      const imgSrc = productImg ? `${process.env.SPREE_API_URL}${imgUrl}` : "";
+      const imgSrc = productImg
+        ? `${process.env.NEXT_PUBLIC_SPREE_API_URL}${imgUrl}`
+        : "";
       return allImages?.map((image: any, index: any) => {
         const imgSrc = image?.attributes?.styles[9]?.url || "";
-        const imgUrl = `${process.env.SPREE_API_URL}${imgSrc}`;
+        const imgUrl = `${process.env.NEXT_PUBLIC_SPREE_API_URL}${imgSrc}`;
         return (
           <StyledSlide
             key={`image-${index}`}
@@ -83,6 +87,36 @@ export const ComingSoon = () => {
       });
     });
   }, [productsData]);
+
+  const renderProductThumbnails = useCallback(
+    (productsData: any, setIsSlideshow: any) => {
+      return productsData?.data?.map((i: any) => {
+        const productImg = i.relationships?.images?.data[0]?.id;
+        const allImages = productsData
+          ? productsData?.included?.filter((e: any) => e.type == "image")
+          : [];
+        const foundImg = allImages
+          ? allImages.filter((e: any) => e["id"] == productImg)
+          : undefined;
+        console.log("foundImg: ", foundImg);
+        const imgUrl =
+          foundImg !== undefined ? foundImg[0]?.attributes?.styles[3]?.url : "";
+        const imgSrc = productImg
+          ? `${process.env.NEXT_PUBLIC_SPREE_API_URL}${imgUrl}` || ""
+          : "";
+        return (
+          <div
+            key={`image-${i.id}`}
+            onClick={() => setIsSlideshow(true)}
+            style={{ cursor: "pointer" }}
+          >
+            <img src={imgSrc} />
+          </div>
+        );
+      });
+    },
+    [productsData]
+  );
 
   useEffect(() => {
     if (productsSuccess) {
@@ -109,6 +143,15 @@ export const ComingSoon = () => {
             title={""}
             openSlideshow={(e: any) => setIsSlideshow(e)}
           />
+        )}
+        {previewMode && (
+          <ResponsiveMasonry
+            columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}
+          >
+            <Masonry>
+              {renderProductThumbnails(productsData, setIsSlideshow)}
+            </Masonry>
+          </ResponsiveMasonry>
         )}
         {siteDesc !== "" && <Text>{siteDesc}</Text>}
         <ProductLinks>
@@ -140,7 +183,7 @@ export const ComingSoon = () => {
               infinite={productsData.data ? true : false}
             >
               <StyledSlider className="slider">
-                {renderProductImgs()}
+                {renderProductSlides()}
               </StyledSlider>
 
               <CarouselNav>
