@@ -35,8 +35,8 @@ We manage our global styles in several files:
 - Create pipeline in Heroku
 - add Github repo
 - Create app
-- heroku buildpacks:add <https://github.com/heroku/heroku-buildpack-nodejs> -a app-name
-- heroku buildpacks:add heroku/nodejs -a app-name
+- `heroku buildpacks:add https://github.com/heroku/heroku-buildpack-nodejs -a app-name`
+- `heroku buildpacks:add heroku/nodejs -a app-name`
 
 Unset all Heroku env vars:
 `heroku config:unset $(heroku config --shell | sed 's/=.*//' | xargs) -a app-name`

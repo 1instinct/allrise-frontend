@@ -21,14 +21,14 @@ export const theme = {
       light: "#f9f9f9"
     },
     blue: {
-      primary: "#7b61ff",
-      medium: lighten(0.66, "#7b61ff"),
-      light: lighten(0.33, "#7b61ff")
+      primary: "#0ABACC",
+      medium: lighten(0.66, "#0ABACC"),
+      light: lighten(0.33, "#0ABACC")
     },
     brand: {
-      primary: "#EB8B8B",
-      secondary: "#E6CDC0",
-      light: "#F9F2EA"
+      primary: "#FFDA17",
+      secondary: "#F4B73F",
+      light: "#ED782F"
     },
     todo: {
       primary: "#BFB081",
@@ -46,9 +46,9 @@ export const theme = {
       light: lighten(0.33, "#A5D8BC")
     },
     red: {
-      primary: "#D04040",
-      medium: lighten(0.66, "#D04040"),
-      light: lighten(0.33, "#D04040")
+      primary: "#842151",
+      medium: lighten(0.66, "#842151"),
+      light: lighten(0.33, "#842151")
     }
   },
   background: {
@@ -89,65 +89,107 @@ export const theme = {
   },
   typography: {
     titleXXL: {
-      fontFamily: "Anybody Light",
+      fontFamily: "Barlow Bold",
       fontWeight: "bold",
       fontSize: "72px",
       lineHeight: "86px",
       color: "#000"
     },
     titleXL: {
-      fontFamily: "Anybody Light",
+      fontFamily: "Barlow Bold",
       fontWeight: "bold",
       fontSize: "33.8681px",
       lineHeight: "41px",
       color: "#000"
     },
     titleLG: {
-      fontFamily: "Anybody Light",
+      fontFamily: "Barlow Bold",
       fontWeight: "bold",
       fontSize: "24px",
       lineHeight: "30px",
       color: "#000"
     },
     titleMD: {
-      fontFamily: "Anybody ExtraLight",
+      fontFamily: "Barlow Bold",
       fontWeight: "bold",
       fontSize: "20px",
       lineHeight: "24px",
       color: "#000"
     },
     titleSM: {
-      fontFamily: "Anybody ExtraLight",
+      fontFamily: "Barlow Bold",
       fontWeight: "normal",
       fontSize: "14px",
       lineHeight: "1.5rem",
       color: "#000"
     },
     titleXS: {
-      fontFamily: "Anybody ExtraLight",
+      fontFamily: "Barlow Bold",
       fontWeight: "normal",
       fontSize: "10px",
       lineHeight: "0.9rem",
       color: "#000"
     },
     bodyMD: {
-      fontFamily: "Anybody ExtraLight",
+      fontFamily: "Special Elite",
       fontWeight: "normal",
       fontSize: "18px",
       lineHeight: "20px",
       color: "#000"
     },
     bodySM: {
-      fontFamily: "Anybody ExtraLight",
+      fontFamily: "Special Elite",
       fontWeight: "normal",
       fontSize: "14px",
       lineHeight: "16px",
       color: "#000"
     },
     bodyXS: {
-      fontFamily: "Anybody ExtraLight",
+      fontFamily: "Special Elite",
       fontWeight: "normal",
       fontSize: "9px",
+      lineHeight: "0.9rem",
+      color: "#000"
+    },
+    specialXXL: {
+      fontFamily: "Press Start",
+      fontWeight: "bold",
+      fontSize: "72px",
+      lineHeight: "86px",
+      color: "#000"
+    },
+    specialXL: {
+      fontFamily: "Press Start",
+      fontWeight: "bold",
+      fontSize: "33.8681px",
+      lineHeight: "41px",
+      color: "#000"
+    },
+    specialLG: {
+      fontFamily: "Press Start",
+      fontWeight: "bold",
+      fontSize: "24px",
+      lineHeight: "30px",
+      color: "#000"
+    },
+    specialMD: {
+      fontFamily: "Press Start",
+      fontWeight: "bold",
+      fontSize: "20px",
+      lineHeight: "24px",
+      color: "#000"
+    },
+    specialSM: {
+      fontFamily: "Press Start",
+      fontWeight: "normal",
+      fontSize: "14px",
+      lineHeight: "1.5rem",
+      color: "#000"
+    },
+    specialXS: {
+      fontFamily: "Press Start",
+      fontWeight: "normal",
+      fontSize: "10px",
       lineHeight: "0.9rem",
       color: "#000"
     }

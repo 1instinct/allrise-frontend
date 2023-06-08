@@ -16,6 +16,7 @@ import "pure-react-carousel/dist/react-carousel.es.css";
 
 import {
   Container,
+  ProductImage,
   Logo,
   LogoText,
   ProductImageCarousel,
@@ -26,7 +27,11 @@ import {
   CarouselNav,
   CarouselBackButton,
   CarouselNextButton,
-  Text
+  Text,
+  Tagline,
+  ProductLinks,
+  ProductLink,
+  ProductLinkImg
 } from "./ComingSoon.styles";
 
 const siteTitle = process.env.NEXT_PUBLIC_SITE_TITLE || "";
@@ -124,19 +129,20 @@ export const ComingSoon = () => {
   return (
     <>
       <Container>
+        <ProductImage src="/images/allrise/allrise-trio.png" alt="All Rise! Phones" />
         {logoPath ? (
           <Logo src={logoPath} />
         ) : siteTitle ? (
           <LogoText>{siteTitle}</LogoText>
         ) : null}
-        {siteDesc && <Text>{siteDesc}</Text>}
-        {/* {previewMode && (
+        {comingSoonText && <Tagline>{comingSoonText}</Tagline>}
+        {previewMode && (
           <ProductTeaser
             products={productsData}
             title={""}
             openSlideshow={(e: any) => setIsSlideshow(e)}
           />
-        )} */}
+        )}
         {previewMode && (
           <ResponsiveMasonry
             columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}
@@ -146,7 +152,16 @@ export const ComingSoon = () => {
             </Masonry>
           </ResponsiveMasonry>
         )}
-        {comingSoonText !== "" && <Text>{comingSoonText}</Text>}
+        {siteDesc !== "" && <Text>{siteDesc}</Text>}
+        <ProductLinks>
+          <ProductLink href="https://apps.apple.com/us/app/all-rise/id1662328976" target="_blank">
+            <ProductLinkImg src="/images/app-store.png" />
+          </ProductLink>
+          <ProductLink href="https://play.google.com/store/apps/details?id=com.allrise.YouJudge" target="_blank">
+            <ProductLinkImg src="/images/play-store.png" />
+          </ProductLink>
+        </ProductLinks>
+        
         <NotifyForm />
         <SocialLinks />
         {isSlideshow && (
