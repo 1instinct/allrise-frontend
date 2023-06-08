@@ -16,7 +16,7 @@ import {
 const notifyQuestions = [
   {
     id: "email",
-    question: "Wanna know when the product becomes available?",
+    question: "Want updates in your inbox?",
     placeholder: "Email",
     buttonText: "Get Updates"
   },
