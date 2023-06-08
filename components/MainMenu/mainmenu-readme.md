@@ -1,18 +1,19 @@
-** ReadMe DOC for using the DNA MainMenu Component **
+**ReadMe DOC for using the DNA MainMenu Component**
 
-** dependencies in use **
+**dependencies in use**
 eve
 snapsvg-cjs
 prop-types
 classnames
 
-** all props of the component **
+**all props of the component**
 
 1. animationType - (it can be one of slide stack elastic bubble push pushRotate scaleDown scaleRotate fallDown reveal)
 pageWrapId - the id of the element wrapping the rest of content on your page
 (except elements with fixed positioning),placed after the component
 example:
 <MainMenu pageWrapId="page-wrap" />
+
 <main id="page-wrap">
 .
 .
@@ -21,6 +22,7 @@ example:
 
 2. outerContainerId - the id of the element containing everything,including the menu component
 example:
+
 <div id="outer-container">
 <MainMenu pageWrapId="page-wrap" outerContainerId="outer-container" />
 <main id="page-wrap">
@@ -118,9 +120,9 @@ this.setState({areMenusOpen: false});
 };
 
 <MainMenu customOnKeyDown={closeAllMenusOnEsc} isOpen={areMenusOpen} />
-Note: Using this prop will disable all the default 
-'close on Escape' functionality, so you will need 
-to handle this (including determining which key was 
+Note: Using this prop will disable all the default
+'close on Escape' functionality, so you will need
+to handle this (including determining which key was
 pressed) yourself.
 
 11. noOverlay
@@ -197,7 +199,7 @@ pressed) yourself.
     with a JavaScript object passed as the styles prop.
     css:
     The component has the following helper classes:
-    /_ Position and sizing of burger button _/
+    /_Position and sizing of burger button_/
     .bm-burger-button {
     position: fixed;
     width: 36px;
@@ -206,23 +208,23 @@ pressed) yourself.
     top: 36px;
     }
 
-/_ Color/shape of burger icon bars _/
+/_Color/shape of burger icon bars_/
 .bm-burger-bars {
 background: #373a47;
 }
 
-/_ Color/shape of burger icon bars on hover_/
+/_Color/shape of burger icon bars on hover_/
 .bm-burger-bars-hover {
 background: #a90000;
 }
 
-/_ Position and sizing of clickable cross button _/
+/_Position and sizing of clickable cross button_/
 .bm-cross-button {
 height: 24px;
 width: 24px;
 }
 
-/_ Color/shape of close button cross _/
+/_Color/shape of close button cross_/
 .bm-cross {
 background: #bdc3c7;
 }
@@ -236,30 +238,30 @@ position: fixed;
 height: 100%;
 }
 
-/_ General sidebar styles _/
+/_General sidebar styles_/
 .bm-menu {
 background: #373a47;
 padding: 2.5em 1.5em 0;
 font-size: 1.15em;
 }
 
-/_ Morph shape necessary with bubble or elastic _/
+/_Morph shape necessary with bubble or elastic_/
 .bm-morph-shape {
 fill: #373a47;
 }
 
-/_ Wrapper for item list _/
+/_Wrapper for item list_/
 .bm-item-list {
 color: #b8b7ad;
 padding: 0.8em;
 }
 
-/_ Individual item _/
+/_Individual item_/
 .bm-item {
 display: inline-block;
 }
 
-/_ Styling of overlay _/
+/_Styling of overlay_/
 .bm-overlay {
 background: rgba(0, 0, 0, 0.3);
 }
@@ -312,10 +314,8 @@ background: 'rgba(0, 0, 0, 0.3)'
 
 <MainMenu styles={ styles } />
 
-** usage **
+**usage**
 import {MainMenu} from '../components'
-
-<<<<<<< HEAD:components/MainMenu/mainmenu-readme.md
 
 <div id="outter-container">
  <MainMenu pageWrapId="page-wrap" outterContainerId="outter-container" animationType="slide" right={false} styles={styles}>
@@ -325,22 +325,16 @@ import {MainMenu} from '../components'
 # <MainMenu pageWrapId="page-wrap" outterContainerId="outter-container" animationType="slide" right={false} styles={styles}>
 
 <div id="outer-container">
-<<<<<<< HEAD:components/MainMenu/readme.txt
  <MainMenu pageWrapId="page-wrap" outterContainerId="outer-container" animationType="slide" right={false} styles={styles}>
 
 # </MainMenu>
 
  <MainMenu pageWrapId="page-wrap" outterContainerId="outer-container" animationType="slide" right={false} styles={styles}>
->>>>>>> ba20c99:components/MainMenu/mobilemenu-readme.md
         <a id="home" className="menu-item" href="/">Home</a>
         <a id="about" className="menu-item" href="/about">About</a>
         <a id="contact" className="menu-item" href="/contact">Contact</a>
         <a onClick={ this.showSettings } className="menu-item--small" href="">Settings</a>
 </MainMenu>
-<<<<<<< HEAD:components/MainMenu/mainmenu-readme.md
-=======
->>>>>>> @aaron.smulktis/develop:components/MainMenu/Mainmenu-readme.md
->>>>>>> ba20c99:components/MainMenu/mobilemenu-readme.md
 <main id="page-wrap">
 .
 .
