@@ -114,9 +114,11 @@ export const GlobalStyles = ({ theme, children }: any) => (
           };
         }
         .pc-menu-item {
-          color: ${theme.isDarkMode
-            ? theme.colors.white.primary
-            : theme.colors.black.primary};
+          color: ${
+            theme.isDarkMode
+              ? theme.colors.white.primary
+              : theme.colors.black.primary
+          };
           font-family: ${theme.typography.bodySM.fontFamily};
           font-weight: ${theme.typography.bodySM.fontWeight};
           font-size: ${theme.typography.bodySM.fontSize};
