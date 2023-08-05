@@ -28,6 +28,7 @@ export const theme = {
     brand: {
       primary: "#FFDA17",
       secondary: "#F4B73F",
+      dark: "#ED782F",
       light: "#ED782F"
     },
     todo: {
