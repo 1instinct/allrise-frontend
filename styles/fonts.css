@@ -114,48 +114,48 @@
 
 @font-face {
   font-family: "Special Elite";
-  src: url("../public/fonts/SpecialElite-Regular.ttf") format("woff2"),
-    url("../public/fonts/SpecialElite-Regular.ttf") format("ttf");
+  src: url("/fonts/SpecialElite-Regular.ttf") format("woff2"),
+    url("/fonts/SpecialElite-Regular.ttf") format("ttf");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Press Start";
-  src: url("../public/fonts/PressStart2P-Regular.ttf") format("woff2"),
-    url("../public/fonts/PressStart2P-Regular.ttf") format("ttf");
+  src: url("/fonts/PressStart2P-Regular.ttf") format("woff2"),
+    url("/fonts/PressStart2P-Regular.ttf") format("ttf");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Hitchcock";
-  src: url("../public/fonts/Hitchcock.ttf") format("woff2"),
-    url("../public/fonts/Hitchcock.ttf") format("ttf");
+  src: url("/fonts/Hitchcock.ttf") format("woff2"),
+    url("/fonts/Hitchcock.ttf") format("ttf");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Barlow Bold";
-  src: url("../public/fonts/Barlow-Bold.ttf") format("woff2"),
-    url("../public/fonts/Barlow-Bold.ttf") format("ttf");
+  src: url("/fonts/Barlow-Bold.ttf") format("woff2"),
+    url("/fonts/Barlow-Bold.ttf") format("ttf");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Barlow Extra Light";
-  src: url("../public/fonts/Barlow-ExtraLight.ttf") format("woff2"),
-    url("../public/fonts/Barlow-ExtraLight.ttf") format("ttf");
+  src: url("/fonts/Barlow-ExtraLight.ttf") format("woff2"),
+    url("/fonts/Barlow-ExtraLight.ttf") format("ttf");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Barlow Condensed Bold";
-  src: url("../public/fonts/BarlowCondensed-Bold.ttf") format("woff2"),
-    url("../public/fonts/BarlowCondensed-Bold.ttf") format("ttf");
+  src: url("/fonts/BarlowCondensed-Bold.ttf") format("woff2"),
+    url("/fonts/BarlowCondensed-Bold.ttf") format("ttf");
   font-weight: normal;
   font-style: normal;
 }
