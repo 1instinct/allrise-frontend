@@ -82,7 +82,7 @@ export const EmailInput = styled.input`
   }
   &:focus {
     transition: 0.33s all ease-in-out;
-    color: ${(props) => props.theme.colors.brand.primary};
+    color: ${(props) => props.theme.colors.brand.dark};
     background-image: ${(p: any) =>
       p.theme.isDarkMode
         ? `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='${p.theme.colors.white.primary}' stroke-width='4' stroke-dasharray='0' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e"`
