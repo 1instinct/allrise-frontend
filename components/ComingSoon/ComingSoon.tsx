@@ -161,13 +161,13 @@ export const ComingSoon = () => {
             href="https://apps.apple.com/us/app/all-rise/id1662328976"
             target="_blank"
           >
-            <ProductLinkImg src="/images/app-store.png" />
+            <ProductLinkImg src="/images/app-store.gif" />
           </ProductLink>
           <ProductLink
             href="https://play.google.com/store/apps/details?id=com.allrise.YouJudge"
             target="_blank"
           >
-            <ProductLinkImg src="/images/play-store.png" />
+            <ProductLinkImg src="/images/play-store.gif" />
           </ProductLink>
         </ProductLinks>
 
