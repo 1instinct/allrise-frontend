@@ -123,10 +123,11 @@ export const LogoText = styled.div`
 export const Tagline = styled.div`
   text-align: center;
   width: 425px;
-  font-family: ${(p: any) => p.theme.typography.titleSM.fontFamily};
-  font-weight: ${(p: any) => p.theme.typography.titleSM.fontWeight};
-  font-size: ${(p: any) => p.theme.typography.titleSM.fontSize};
-  line-height: ${(p: any) => p.theme.typography.titleSM.lineHeight};
+  margin: 10px auto;
+  font-family: ${(p: any) => p.theme.typography.titleMD.fontFamily};
+  font-weight: ${(p: any) => p.theme.typography.titleMD.fontWeight};
+  font-size: ${(p: any) => p.theme.typography.titleMD.fontSize};
+  line-height: ${(p: any) => p.theme.typography.titleMD.lineHeight};
   text-transform: uppercase;
   color: ${(p: any) =>
     p.theme.isDarkMode

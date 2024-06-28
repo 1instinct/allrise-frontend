@@ -90,42 +90,42 @@ export const theme = {
   },
   typography: {
     titleXXL: {
-      fontFamily: "Barlow Bold",
+      fontFamily: "Anybody Light",
       fontWeight: "bold",
       fontSize: "72px",
       lineHeight: "86px",
       color: "#000"
     },
     titleXL: {
-      fontFamily: "Barlow Bold",
+      fontFamily: "Anybody Light",
       fontWeight: "bold",
       fontSize: "33.8681px",
       lineHeight: "41px",
       color: "#000"
     },
     titleLG: {
-      fontFamily: "Barlow Bold",
+      fontFamily: "Anybody Light",
       fontWeight: "bold",
       fontSize: "24px",
       lineHeight: "30px",
       color: "#000"
     },
     titleMD: {
-      fontFamily: "Barlow Bold",
+      fontFamily: "Anybody ExtraLight",
       fontWeight: "bold",
       fontSize: "20px",
       lineHeight: "24px",
       color: "#000"
     },
     titleSM: {
-      fontFamily: "Barlow Bold",
+      fontFamily: "Anybody ExtraLight",
       fontWeight: "normal",
       fontSize: "14px",
       lineHeight: "1.5rem",
       color: "#000"
     },
     titleXS: {
-      fontFamily: "Barlow Bold",
+      fontFamily: "Anybody ExtraLight",
       fontWeight: "normal",
       fontSize: "10px",
       lineHeight: "0.9rem",

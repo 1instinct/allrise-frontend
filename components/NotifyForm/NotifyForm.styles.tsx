@@ -59,10 +59,10 @@ export const EmailInput = styled.input`
   height: 36.15px;
   border: none;
   box-sizing: border-box;
-  font-family: ${(p: any) => p.theme.typography.bodySM.fontFamily};
-  font-weight: ${(p: any) => p.theme.typography.bodySM.fontWeight};
-  font-size: ${(p: any) => p.theme.typography.bodySM.fontSize};
-  line-height: ${(p: any) => p.theme.typography.bodySM.lineHeight};
+  font-family: ${(p: any) => p.theme.typography.bodyMD.fontFamily};
+  font-weight: ${(p: any) => p.theme.typography.bodyMD.fontWeight};
+  font-size: ${(p: any) => p.theme.typography.bodyMD.fontSize};
+  line-height: ${(p: any) => p.theme.typography.bodyMD.lineHeight};
   /* // position: absolute;
   // left: 50%;
   // margin-left: -150px; */
@@ -76,20 +76,20 @@ export const EmailInput = styled.input`
   transition: 0.33s all ease-in-out;
   &::placeholder {
     color: ${(p: any) =>
-      p.theme.isDarkMode
-        ? p.theme.colors.white.primary
-        : p.theme.colors.black.primary};
+    p.theme.isDarkMode
+      ? p.theme.colors.white.primary
+      : p.theme.colors.black.primary};
   }
   &:focus {
     transition: 0.33s all ease-in-out;
     color: ${(props) => props.theme.colors.brand.dark};
     background-image: ${(p: any) =>
-      p.theme.isDarkMode
-        ? `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='${p.theme.colors.white.primary}' stroke-width='4' stroke-dasharray='0' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e"`
-        : `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='${p.theme.colors.black.primary}' stroke-width='4' stroke-dasharray='0' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e"`};
+    p.theme.isDarkMode
+      ? `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='${p.theme.colors.white.primary}' stroke-width='4' stroke-dasharray='0' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e"`
+      : `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='${p.theme.colors.black.primary}' stroke-width='4' stroke-dasharray='0' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e"`};
   }
   &:focus::placeholder {
-    color: ${(props) => props.theme.colors.brand.primary};
+    color: ${(props) => props.theme.colors.brand.dark};
   }
 `;
 
@@ -148,6 +148,6 @@ export const MailTo = styled.a`
   padding-top: 25px;
   bottom: 0;
   &:hover {
-    text-decoration: underline;
+    color: ${(p: any) => p.theme.colors.brand.dark};
   }
 `;

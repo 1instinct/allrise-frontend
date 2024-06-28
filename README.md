@@ -4,10 +4,15 @@
 
 ### Running Locally
 
-- `cp .env.example .env.development`
-- Replace `.env.development` with variables from Aaron
-- `yarn dev`
-- Open [http://localhost:3000](http://localhost:3000) in your browser.
+1. `cp .env.example .env.development`
+1. Replace `.env.development` with variables from Aaron
+1. `yarn dev`
+1. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+_Gotchas:_
+
+- Does the backend (`dna-admin`) have menus, products, live streams
+- Do you have the backend url & api key in `.env`?
 
 ## Styles
 
@@ -77,7 +82,7 @@ Done!
 - `git checkout main`
 - `git pull upstream main`
 
-# TODO
+## TODO
 
 - Move data fetching into on `getInitialProps`
 - Setup Redux
@@ -102,7 +107,9 @@ Done!
 - Twilio
 - Unit Testing
 - Chat widget
+- RSS feeds
 - Chatbot (Rasa)
+- Masonry ([react-responsive-masonry](https://www.npmjs.com/package/react-responsive-masonry))
 - Browser Feature Detection
 - Speed/Performance Benchmarking (GTMetrix.com API?)
 - Header tags customization (NextJS: `next/header`)

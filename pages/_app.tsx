@@ -29,7 +29,7 @@ import { AppWrapper } from "./_app.styles";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());
-  const [wholesale, setWholesale] = useState(true);
+  const [wholesale, setWholesale] = useState(false);
   const router = useRouter();
   const isMaint = process.env.NEXT_PUBLIC_IS_MAINT_MODE || "true";
 
@@ -65,6 +65,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <Header darkMode={darkMode} />
         <MainMenu
           showMenuHeader
+          onMenuItemClick={(key: string) => router.push(key)}
           customBurgerIcon={<i className="btb bt-bars" />}
           pcMenuItemClassName={"pc-menu-item"}
           pcWrapClassName={"pc-menu-wrap"}

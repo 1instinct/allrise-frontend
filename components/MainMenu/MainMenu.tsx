@@ -58,19 +58,8 @@ export const MainMenu = (props: MainMenuProps) => {
     isSuccess: boolean;
   } = useMenuItems(1);
 
-  useEffect(() => {
-    // if (menuItemsIsSuccess && menuLocationIsSuccess) {
-    //   console.log(
-    //     menusData,
-    //     "MENU LOCATION",
-    //     menuLocationData?.response_data,
-    //     "MENU ITEMS",
-    //     menuItemsData?.response_data
-    //   );
-    // }
-  }, []);
-
-  if (menuItemsIsLoading || menuLocationIsLoading) return null;
+  if (menuItemsIsLoading || menuLocationIsLoading || !menuItemsData)
+    return null;
 
   return (
     <>
@@ -90,7 +79,7 @@ export const MainMenu = (props: MainMenuProps) => {
             pcMenuItemClassName={pcMenuItemClassName}
             menusLoading={menuItemsIsLoading}
             menusData={menuItemsData ? menuItemsData?.response_data : []}
-            // menusData={menusData}
+          // menusData={menusData}
           />
         ) : null}
       </HiddenOnMobile>
@@ -105,7 +94,7 @@ export async function getServerSideProps() {
   await queryClient.prefetchQuery(["menu_location", 1], () =>
     fetchMenuLocation(1)
   );
-  await queryClient.prefetchQuery(["menu_items", 1], () => fetchMenuItems(0));
+  await queryClient.prefetchQuery(["menu_items", 1], () => fetchMenuItems(1));
 
   return {
     props: {

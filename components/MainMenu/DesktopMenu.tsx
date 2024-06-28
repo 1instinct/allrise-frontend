@@ -71,32 +71,31 @@ const DesktopMenu: React.FC<IDesktopMenuProps> = (props: IDesktopMenuProps) => {
         if (item.childrens.length) {
           return (
             <DropDown
+              // onClick={handleMouseEnter.bind(null, item)}
               onMouseEnter={handleMouseEnter.bind(null, item)}
               onMouseLeave={handleMouseLeave}
               isActive={currentKey == item.id}
               key={`${index}-2`}
             >
-              {item.childrens?.map((item: any, index: any) => (
+              {item.childrens?.map((child: any, index: any) => (
                 <DropDownColumn key={`${index}-column`}>
-                  <DropDownHeader key={`${index}-header`}>
+                  {/* <DropDownHeader key={`${index}-header`}>
                     {item.name}
-                  </DropDownHeader>
-                  {item.childrens?.map((item: any, index: any) => (
-                    <DropDownLink href={item.url} key={`${index}-link`}>
-                      {item.name}
-                    </DropDownLink>
-                  ))}
+                  </DropDownHeader> */}
+                  <DropDownLink href={child.url} key={`${index}-link`}>
+                    {child.name}
+                  </DropDownLink>
                 </DropDownColumn>
               ))}
               <Vr />
               <DropDownAdvert>
-                <h1>On Sale!</h1>
+                <h1>On Sale</h1>
               </DropDownAdvert>
             </DropDown>
           );
         }
       })}
-    </Container>
+    </Container >
   );
 };
 export default DesktopMenu;
