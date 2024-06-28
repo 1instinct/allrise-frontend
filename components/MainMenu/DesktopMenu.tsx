@@ -95,7 +95,7 @@ const DesktopMenu: React.FC<IDesktopMenuProps> = (props: IDesktopMenuProps) => {
           );
         }
       })}
-    </Container >
+    </Container>
   );
 };
 export default DesktopMenu;

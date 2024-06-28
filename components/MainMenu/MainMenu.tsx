@@ -79,7 +79,7 @@ export const MainMenu = (props: MainMenuProps) => {
             pcMenuItemClassName={pcMenuItemClassName}
             menusLoading={menuItemsIsLoading}
             menusData={menuItemsData ? menuItemsData?.response_data : []}
-          // menusData={menusData}
+            // menusData={menusData}
           />
         ) : null}
       </HiddenOnMobile>

@@ -232,12 +232,12 @@ class MyDocument extends Document {
               src={`https://www.facebook.com/tr?id=${tracking.FB_PIXEL_ID}&ev=PageView&noscript=1`}
             />
           </noscript>
-        </Head >
+        </Head>
         <body>
           <Main />
           <NextScript />
         </body>
-      </Html >
+      </Html>
     );
   }
 }

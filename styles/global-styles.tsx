@@ -107,16 +107,18 @@ export const GlobalStyles = ({ theme, children }: any) => (
           outline: none;
         }
         i {
-          color: ${theme.isDarkMode
-          ? theme.colors.white.primary
-          : theme.colors.black.primary
-        };
+          color: ${
+            theme.isDarkMode
+              ? theme.colors.white.primary
+              : theme.colors.black.primary
+          };
         }
         .pc-menu-item {
-          color: ${theme.isDarkMode
-          ? theme.colors.white.primary
-          : theme.colors.black.primary
-        };
+          color: ${
+            theme.isDarkMode
+              ? theme.colors.white.primary
+              : theme.colors.black.primary
+          };
           font-family: ${theme.typography.bodySM.fontFamily};
           font-weight: ${theme.typography.bodySM.fontWeight};
           font-size: ${theme.typography.bodySM.fontSize};
@@ -130,10 +132,11 @@ export const GlobalStyles = ({ theme, children }: any) => (
         }
         .bm-burger-button {
           span span {
-            background: ${theme.isDarkMode
-          ? theme.colors.white.primary
-          : theme.colors.black.primary
-        } !important;
+            background: ${
+              theme.isDarkMode
+                ? theme.colors.white.primary
+                : theme.colors.black.primary
+            } !important;
           }
         }
       `) as SerializedStyles

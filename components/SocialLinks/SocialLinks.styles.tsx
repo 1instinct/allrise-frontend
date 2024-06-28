@@ -19,10 +19,10 @@ export const SocialListItem = styled.li<FooterStateType>`
   margin: 0 10px;
   & a {
     color: ${(p) =>
-    p.theme.isDarkMode
-      ? p.theme.colors.white.primary
-      : p.theme.colors.black.primary};
-    
+      p.theme.isDarkMode
+        ? p.theme.colors.white.primary
+        : p.theme.colors.black.primary};
+
     & svg {
       width: 2em;
       height: 2em;

@@ -133,34 +133,28 @@ export const ComingSoon = () => {
           src="/images/allrise/allrise-trio.png"
           alt="All Rise! Phones"
         />
-        {
-          logoPath ? (
-            <Logo src={logoPath} />
-          ) : siteTitle ? (
-            <LogoText>{siteTitle}</LogoText>
-          ) : null
-        }
+        {logoPath ? (
+          <Logo src={logoPath} />
+        ) : siteTitle ? (
+          <LogoText>{siteTitle}</LogoText>
+        ) : null}
         {comingSoonText && <Tagline>{comingSoonText}</Tagline>}
-        {
-          previewMode && (
-            <ProductTeaser
-              products={productsData}
-              title={""}
-              openSlideshow={(e: any) => setIsSlideshow(e)}
-            />
-          )
-        }
-        {
-          previewMode && (
-            <ResponsiveMasonry
-              columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}
-            >
-              <Masonry>
-                {renderProductThumbnails(productsData, setIsSlideshow)}
-              </Masonry>
-            </ResponsiveMasonry>
-          )
-        }
+        {previewMode && (
+          <ProductTeaser
+            products={productsData}
+            title={""}
+            openSlideshow={(e: any) => setIsSlideshow(e)}
+          />
+        )}
+        {previewMode && (
+          <ResponsiveMasonry
+            columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}
+          >
+            <Masonry>
+              {renderProductThumbnails(productsData, setIsSlideshow)}
+            </Masonry>
+          </ResponsiveMasonry>
+        )}
         {siteDesc !== "" && <Text>{siteDesc}</Text>}
         <ProductLinks>
           <ProductLink
@@ -179,36 +173,34 @@ export const ComingSoon = () => {
 
         <NotifyForm />
         <SocialLinks />
-        {
-          isSlideshow && (
-            <ProductImageCarousel>
-              <CarouselBackground onClick={() => setIsSlideshow(false)} />
-              <CarouselProvider
-                naturalSlideWidth={600}
-                naturalSlideHeight={600}
-                totalSlides={productsData.data ? productsData.data.length : 1}
-                // isIntrinsicHeight
-                touchEnabled
-                infinite={productsData.data ? true : false}
-              >
-                <StyledSlider className="slider">
-                  {renderProductSlides()}
-                </StyledSlider>
+        {isSlideshow && (
+          <ProductImageCarousel>
+            <CarouselBackground onClick={() => setIsSlideshow(false)} />
+            <CarouselProvider
+              naturalSlideWidth={600}
+              naturalSlideHeight={600}
+              totalSlides={productsData.data ? productsData.data.length : 1}
+              // isIntrinsicHeight
+              touchEnabled
+              infinite={productsData.data ? true : false}
+            >
+              <StyledSlider className="slider">
+                {renderProductSlides()}
+              </StyledSlider>
 
-                <CarouselNav>
-                  <CarouselBackButton>
-                    <ArrowBack />
-                  </CarouselBackButton>
-                  <CarouselNextButton>
-                    <ArrowForward />
-                  </CarouselNextButton>
-                </CarouselNav>
-              </CarouselProvider>
-            </ProductImageCarousel>
-          )
-        }
+              <CarouselNav>
+                <CarouselBackButton>
+                  <ArrowBack />
+                </CarouselBackButton>
+                <CarouselNextButton>
+                  <ArrowForward />
+                </CarouselNextButton>
+              </CarouselNav>
+            </CarouselProvider>
+          </ProductImageCarousel>
+        )}
         <LegalLinks />
-      </Container >
+      </Container>
     </>
   );
 };

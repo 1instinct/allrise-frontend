@@ -99,8 +99,8 @@ export const Header: React.FC<HeaderProps> = ({ darkMode }) => {
             }}
           >
             <MyLogo imageFile={logoPath} darkMode={darkMode} />
-          </LinkDiv >
-        </LogoDiv >
+          </LinkDiv>
+        </LogoDiv>
         <RightSide>
           {isMobile ? null : <SearchBar darkMode={darkMode} />}
           {user ? (
@@ -163,7 +163,7 @@ export const Header: React.FC<HeaderProps> = ({ darkMode }) => {
             </Badge>
           </CartToggle>
         </RightSide>
-      </TopHeader >
-    </HeaderDiv >
+      </TopHeader>
+    </HeaderDiv>
   );
 };

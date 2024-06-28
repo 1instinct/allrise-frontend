@@ -126,8 +126,8 @@ export const Home = (props: any) => {
         {advertListMobile}
         {!productsAreLoading && polProductList}
         {banner}
-      </Content >
-    </Layout >
+      </Content>
+    </Layout>
   );
 };
 
