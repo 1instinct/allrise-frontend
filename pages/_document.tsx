@@ -68,8 +68,10 @@ class MyDocument extends Document {
       Object.seal(sheet);
     }
   }
+
   render() {
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://instinct.is";
+    const appStoreId = process.env.NEXT_PUBLIC_APP_STORE_ID || "1662328976";
     const siteTitle =
       process.env.NEXT_PUBLIC_PAGE_TITLE ||
       process.env.NEXT_PUBLIC_SITE_TITLE ||
@@ -154,6 +156,8 @@ class MyDocument extends Document {
           <meta name="twitter:image" content={`${siteUrl}${ogImgPath}`} />
 
           <meta name="twitter:creator" content={`@${twitterSlug}`} />
+
+          <meta name="apple-itunes-app" content={`app-id=${appStoreId}`} />
 
           <link rel="icon" href="/img/favicon.ico" />
           <link rel="canonical" href={siteUrl} />
