@@ -40,6 +40,15 @@ loadEnvVariables();
 const isLocalDevEnvironment = !process.env.DEPLOY_ENV;
 module.exports = {
   swcMinify: true,
+  async redirects() {
+    return [
+      {
+        source: "/.well-known/:file",
+        destination: "/api/.well-known/:file",
+        permanent: false
+      }
+    ];
+  },
   webpack: (config, { webpack }) => {
     config.plugins = config.plugins || [];
     config.plugins = [

@@ -1,4 +1,5 @@
 export enum QueryKeys {
+  QUIZ = "QUIZ",
   CART = "CART",
   PRODUCTS = "PRODUCTS",
   PRODUCT = "PRODUCT",

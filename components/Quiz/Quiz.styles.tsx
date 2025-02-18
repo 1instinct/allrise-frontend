@@ -1,0 +1,196 @@
+import styled from "@emotion/styled";
+
+export const QuizContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  min-height: 100vh;
+  background: url("/images/allrise/law-pattern.png"),
+    linear-gradient(196.13deg, #ffda17 -16.74%, #f7be56 89.04%);
+  background-attachment: fixed;
+`;
+
+export const QuizWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 800px;
+  background: white;
+  @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+    width: 100%;
+    height: auto;
+    margin-bottom: -150px;
+  }
+`;
+
+export const Logo = styled.img`
+  width: auto;
+  height: 85px;
+
+  @media screen and (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+    width: 90%;
+    height: auto;
+  }
+`;
+
+export const LogoText = styled.div`
+  font-family: ${(p: any) => p.theme.typography.titleLG.fontFamily};
+  font-weight: ${(p: any) => p.theme.typography.titleLG.fontWeight};
+  font-size: ${(p: any) => p.theme.typography.titleLG.fontSize};
+  line-height: ${(p: any) => p.theme.typography.titleLG.lineHeight};
+  color: ${(p: any) =>
+    p.theme.isDarkMode
+      ? p.theme.colors.white.primary
+      : p.theme.colors.black.primary};
+  margin: 40px 0 20px 0;
+`;
+
+export const Tagline = styled.div`
+  text-align: center;
+  width: 425px;
+  margin: 10px auto;
+  font-family: ${(p: any) => p.theme.typography.titleMD.fontFamily};
+  font-weight: ${(p: any) => p.theme.typography.titleMD.fontWeight};
+  font-size: ${(p: any) => p.theme.typography.titleMD.fontSize};
+  line-height: ${(p: any) => p.theme.typography.titleMD.lineHeight};
+  text-transform: uppercase;
+  color: ${(p: any) =>
+    p.theme.isDarkMode
+      ? p.theme.colors.white.primary
+      : p.theme.colors.black.primary};
+`;
+
+export const Text = styled.div`
+  text-align: center;
+  width: 425px;
+  font-family: ${(p: any) => p.theme.typography.specialMD.fontFamily};
+  font-weight: ${(p: any) => p.theme.typography.specialMD.fontWeight};
+  font-size: ${(p: any) => p.theme.typography.specialMD.fontSize};
+  line-height: ${(p: any) => p.theme.typography.specialMD.lineHeight};
+  text-transform: uppercase;
+  color: ${(p: any) =>
+    p.theme.isDarkMode
+      ? p.theme.colors.white.primary
+      : p.theme.colors.black.primary};
+`;
+
+export const QuizInfo = styled.div`
+  margin-top: -25px;
+  padding-bottom: 40px;
+`;
+
+export const QuizTitleWrapper = styled.div`
+  background-color: black;
+  margin: 0px 0px 5px 0px;
+  transform: rotate(-2deg);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 1px 6px 12px rgba(0, 0, 0, 0.66);
+  border-bottom: 2px solid white;
+  border-right: 2px solid white;
+  border-radius: 6px;
+  width: 100%;
+`;
+
+export const QuizTitle = styled.h2`
+  color: white;
+  padding: 10px;
+  font-family: "Hitchcock", sans-serif;
+  font-size: 20px;
+  letter-spacing: 1px;
+  text-align: center;
+  text-transform: capitalize;
+`;
+
+export const QuizText = styled.p`
+  color: black;
+  padding: 0 16px;
+  text-align: justify;
+  margin-top: 20px;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 1px;
+  font-family: "Special", sans-serif;
+`;
+
+export const QuizImageWrapper = styled.div`
+  height: 280px;
+`;
+
+export const QuizImage = styled.img`
+  width: 100%;
+  height: 280px;
+`;
+
+export const BackButton = styled.button`
+  position: absolute;
+  top: 50px;
+  left: 10px;
+  width: 30px;
+  height: 30px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.11);
+`;
+
+export const RowOfOptions = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 10px;
+`;
+
+export const YesButton = styled.button`
+  background: #ffda17;
+  color: black;
+  font-family: "Hitchcock", sans-serif;
+  font-size: 16px;
+  letter-spacing: 1px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+`;
+
+export const NoButton = styled.button`
+  background: #f7be56;
+  color: black;
+  font-family: "Hitchcock", sans-serif;
+  font-size: 16px;
+  letter-spacing: 1px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+`;
+
+export const CentralControl = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+`;
+
+export const CategoryWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+`;
+
+export const CategoryName = styled.h3`
+  font-family: "Special", sans-serif;
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: black;
+  margin: 0;
+  padding: 0;
+`;
