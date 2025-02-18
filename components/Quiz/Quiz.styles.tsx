@@ -5,12 +5,12 @@ export const QuizContainer = styled.div`
   flex-direction: column;
   position: relative;
   justify-content: center;
-  align-items: center;
   width: auto;
   min-height: 100vh;
   background: url("/images/allrise/law-pattern.png"),
     linear-gradient(196.13deg, #ffda17 -16.74%, #f7be56 89.04%);
   background-attachment: fixed;
+  padding: 40px 0;
 `;
 
 export const QuizWrapper = styled.div`
@@ -18,9 +18,8 @@ export const QuizWrapper = styled.div`
   flex-direction: column;
   flex: 1;
   align-items: center;
-  justify-content: center;
   margin: 0 auto;
-  padding: 20px;
+  padding: 0;
   max-width: 800px;
   background: white;
   @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
@@ -28,10 +27,12 @@ export const QuizWrapper = styled.div`
     height: auto;
     margin-bottom: -150px;
   }
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.11);
 `;
 
 export const Logo = styled.img`
   width: auto;
+  margin: 0 auto;
   height: 85px;
 
   @media screen and (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
@@ -99,6 +100,11 @@ export const QuizTitleWrapper = styled.div`
   border-right: 2px solid white;
   border-radius: 6px;
   width: 100%;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 1px 6px 12px rgba(0, 0, 0, 0.66);
+  }
 `;
 
 export const QuizTitle = styled.h2`
@@ -123,20 +129,23 @@ export const QuizText = styled.p`
 `;
 
 export const QuizImageWrapper = styled.div`
-  height: 280px;
+  width: 100%;
+  height: auto;
+  margin-bottom: -21px;
 `;
 
 export const QuizImage = styled.img`
   width: 100%;
-  height: 280px;
+  height: auto;
 `;
 
 export const BackButton = styled.button`
-  position: absolute;
+  position: fixed;
   top: 50px;
   left: 10px;
-  width: 30px;
-  height: 30px;
+  width: 36px;
+  height: 36px;
+  padding: 3px 5px;
   background: white;
   border-radius: 50%;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.11);
@@ -145,8 +154,8 @@ export const BackButton = styled.button`
 export const RowOfOptions = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 20px;
-  gap: 10px;
+  margin: 20px 16px;
+  gap: 16px;
 `;
 
 export const YesButton = styled.button`

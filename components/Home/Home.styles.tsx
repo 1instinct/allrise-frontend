@@ -10,7 +10,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: auto;
-  /* min-height: 100vh; */
+  height: auto;
   background: url("/images/allrise/law-pattern.png"),
     linear-gradient(196.13deg, #ffda17 -16.74%, #f7be56 89.04%);
   background-attachment: fixed;
@@ -18,7 +18,7 @@ export const Container = styled.div`
 
 export const ProductImage = styled.img`
   width: 33%;
-  height: 100%;
+  height: auto;
   object-fit: contain;
   object-position: center;
   margin: 0 auto;
@@ -179,7 +179,7 @@ export const ProductLinkImg = styled.img`
 
 export const ProductTeaserContainer = styled.div`
   display: flex;
-  height: 600px;
+  height: 420px;
   justify-content: center;
   align-items: center;
   margin: 20px auto;
@@ -187,21 +187,19 @@ export const ProductTeaserContainer = styled.div`
 `;
 
 export const ProductTeaserBackgroundCircle = styled.div`
-  width: 300px;
-  height: 300px;
-  top: 0;
-  left: 150px;
-  margin-left: -150px;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
   background: ${(p: any) =>
     p.theme.isDarkMode
-      ? transparentize(0.33, p.theme.colors.black.primary)
-      : transparentize(0.33, p.theme.colors.white.primary)};
-  border-radius: 50%;
+      ? p.theme.colors.black.primary
+      : p.theme.colors.white.primary};
+  opacity: 0.77;
   position: absolute;
 `;
 
 export const ProductTeaserImage = styled.img`
-  width: 100%;
+  width: 400px;
   height: auto;
   object-fit: contain;
   object-position: center;
