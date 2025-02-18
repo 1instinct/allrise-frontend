@@ -62,7 +62,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
     return (
       <AppWrapper>
-        <Header darkMode={darkMode} />
+        {/* <Header darkMode={darkMode} /> */}
         <MainMenu
           showMenuHeader
           onMenuItemClick={(key: string) => router.push(key)}

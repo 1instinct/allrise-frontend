@@ -33,6 +33,7 @@ import {
   ProductLink,
   ProductLinkImg,
   ProductTeaserContainer,
+  ProductTeaserBackgroundCircle,
   ProductTeaserImage
 } from "./Home.styles";
 
@@ -173,8 +174,14 @@ export const Home = () => {
           </ProductLink>
         </ProductLinks>
 
+        <hr />
+
+        <h3>Prefer a physical game?</h3>
+        <h1>Coming Soon...</h1>
+
         <ProductTeaserContainer>
-          <ProductTeaserImage src="/images/allrise/allrise-trio.png" />
+          <ProductTeaserBackgroundCircle />
+          <ProductTeaserImage src="/images/allrise/allrise-card-box-2023.png" />
         </ProductTeaserContainer>
 
         <NotifyForm />
