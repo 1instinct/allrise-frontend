@@ -194,8 +194,8 @@ export const ProductTeaserBackgroundCircle = styled.div`
   margin-left: -150px;
   background: ${(p: any) =>
     p.theme.isDarkMode
-    ? transparentize(0.33, p.theme.colors.black.primary)
-    : transparentize(0.33, p.theme.colors.white.primary)};
+      ? transparentize(0.33, p.theme.colors.black.primary)
+      : transparentize(0.33, p.theme.colors.white.primary)};
   border-radius: 50%;
   position: absolute;
 `;

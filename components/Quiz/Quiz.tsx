@@ -18,7 +18,7 @@ import {
   BackButton,
   YesButton,
   NoButton,
-  Logo,
+  Logo
 } from "./Quiz.styles";
 import { useQuestion } from "../../hooks/useQuiz";
 import { Speaker } from "@material-ui/icons";
@@ -42,7 +42,7 @@ export const Quiz = () => {
   const playSummary = () => {
     const audio = new Audio(caseData?.narrations[0].url);
     audio.play();
-  }
+  };
 
   if (isLoading) return <div>Loading...</div>;
 
@@ -67,7 +67,9 @@ export const Quiz = () => {
                 </div>
               ))}
             </Carousel>
-          ) : <QuizImage src={caseData?.image} alt={caseData?.title} />}
+          ) : (
+            <QuizImage src={caseData?.image} alt={caseData?.title} />
+          )}
           <BackButton onClick={() => router.back()}>←</BackButton>
         </QuizImageWrapper>
         <Speaker onClick={() => playSummary()} />
