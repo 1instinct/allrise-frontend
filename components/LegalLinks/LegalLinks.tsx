@@ -14,7 +14,10 @@ export const LegalLinks = ({ darkMode, hasBackground }: any) => {
   return (
     <LegalContainer darkMode={darkMode} hasBackground={hasBackground}>
       <LegalRow>
-        All materials copyright © {currentYear}, <LegalLink href="https://instinct.is" target="_blank">Material Instinct LLC</LegalLink>
+        All materials copyright © {currentYear},{" "}
+        <LegalLink href="https://instinct.is" target="_blank">
+          Material Instinct LLC
+        </LegalLink>
       </LegalRow>
       <LegalRow>
         <LegalColumn>

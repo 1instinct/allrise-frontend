@@ -21,7 +21,15 @@ import {
   Logo
 } from "./Quiz.styles";
 import { useQuestion } from "../../hooks/useQuiz";
-import { ArrowBack, Speaker, SpeakerPhone, VolumeMute, VolumeMuteSharp, VolumeOff, VolumeOffRounded } from "@material-ui/icons";
+import {
+  ArrowBack,
+  Speaker,
+  SpeakerPhone,
+  VolumeMute,
+  VolumeMuteSharp,
+  VolumeOff,
+  VolumeOffRounded
+} from "@material-ui/icons";
 import { LegalLink } from "../LegalLinks/LegalLinks.styles";
 
 interface QuizImage {
@@ -38,18 +46,18 @@ const nativeAds = [
   {
     id: 1,
     lawfirm: "Law Firm 1",
-    url: "https://allrise-api-production.s3.amazonaws.com/ads/ad-1.jpg",
+    url: "https://allrise-api-production.s3.amazonaws.com/ads/ad-1.jpg"
   },
   {
     id: 2,
     lawfirm: "Law Firm 2",
-    url: "https://allrise-api-production.s3.amazonaws.com/ads/ad-2.jpg",
+    url: "https://allrise-api-production.s3.amazonaws.com/ads/ad-2.jpg"
   },
   {
     id: 3,
     lawfirm: "Law Firm 3",
-    url: "https://allrise-api-production.s3.amazonaws.com/ads/ad-3.jpg",
-  },
+    url: "https://allrise-api-production.s3.amazonaws.com/ads/ad-3.jpg"
+  }
 ];
 
 export const Quiz = () => {
@@ -82,11 +90,20 @@ export const Quiz = () => {
 
   return (
     <QuizContainer>
-      <div style={{ display: "flex", justifyContent: "flex-start", alignItems: "center", padding: "20px 0" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-start",
+          alignItems: "center",
+          padding: "20px 0"
+        }}
+      >
         <Logo src="/images/allrise/logo-shadow.png" alt="AllRise Logo" />
-        <LegalLink href={`/ios-case/${id}`}>Open case in the All Rise! App</LegalLink>
+        <LegalLink href={`/ios-case/${id}`}>
+          Open case in the All Rise! App
+        </LegalLink>
       </div>
-      <QuizWrapper> 
+      <QuizWrapper>
         <QuizImageWrapper>
           {caseData?.sketches?.length ? (
             <Carousel
@@ -108,8 +125,8 @@ export const Quiz = () => {
           ) : (
             <QuizImage src={defaultQuizImage} alt={caseData?.title} />
           )}
-          <BackButton onClick={() => router.push('/')}>
-            <ArrowBack style={{ color: 'black'}} />
+          <BackButton onClick={() => router.push("/")}>
+            <ArrowBack style={{ color: "black" }} />
           </BackButton>
         </QuizImageWrapper>
         <QuizInfo>
