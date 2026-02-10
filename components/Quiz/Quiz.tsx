@@ -316,8 +316,7 @@ export const Quiz = () => {
   const answer = (guess: string) => {
     if (!caseData || rulingResult !== undefined) return;
 
-    const correct =
-      caseData.verdict.toLowerCase() === guess.toLowerCase();
+    const correct = caseData.verdict.toLowerCase() === guess.toLowerCase();
     setRulingResult(correct ? "win" : "loss");
     setShowRuling(true);
   };
@@ -333,7 +332,8 @@ export const Quiz = () => {
       caseData?.narrations?.find(
         (n: any) =>
           n.narration_type === "ruling" && n.language === selectedLanguage
-      ) || caseData?.narrations?.find((n: any) => n.narration_type === "ruling");
+      ) ||
+      caseData?.narrations?.find((n: any) => n.narration_type === "ruling");
     if (!narration) return;
 
     const audio = new Audio(narration.url);
