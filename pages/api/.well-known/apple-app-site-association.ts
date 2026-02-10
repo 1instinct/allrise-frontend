@@ -1,20 +1,38 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+import { NextApiRequest, NextApiResponse } from 'next';
 
-const BUNDLE_ID = "5E3H5S4R65.com.allrise.YouJudge";
-
-const association = {
+interface Association {
   applinks: {
-    apps: [],
-    details: [
-      {
-        appID: `${BUNDLE_ID}`,
-        // paths: ['*', "/"],
-        paths: ["/ios-case/*"]
-      }
-    ]
-  }
-};
+    details: AppLinkDetail[];
+  };
+}
 
-export default (_: NextApiRequest, response: NextApiResponse) => {
-  return response.status(200).send(association);
-};
+interface AppLinkDetail {
+  appIDs: string[];
+  components: Component[];
+}
+
+interface Component {
+  [path: string]: string;
+}
+
+
+export default function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<Association>
+) {
+  const association: Association = {
+    applinks: {
+      details: [
+        {
+          appIDs: ["5E3H5S4R65.com.allrise.YouJudge"],
+          components: [
+            { "/": "/ios-case/*" }
+          ]
+        }
+      ]
+    }
+  };
+
+  res.setHeader('Content-Type', 'application/json');
+  return res.status(200).json(association);
+}
