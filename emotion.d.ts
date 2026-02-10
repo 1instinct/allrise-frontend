@@ -4,6 +4,7 @@ import { string } from "prop-types";
 declare module "@emotion/react" {
   export interface Theme {
     isDarkMode: boolean;
+    isSimpleSignup: boolean;
     colors: {
       purple?: {
         light: string;
@@ -17,11 +18,13 @@ declare module "@emotion/react" {
         background: string;
       };
       black: {
+        dark: string;
         primary: string;
         medium: string;
         light: string;
       };
       white: {
+        dark: string;
         primary: string;
         medium: string;
         light: string;
@@ -34,6 +37,7 @@ declare module "@emotion/react" {
       brand: {
         primary: string;
         secondary: string;
+        dark: string;
         light: string;
         dark: string;
       };
@@ -48,6 +52,11 @@ declare module "@emotion/react" {
         light: string;
       };
       developed: {
+        primary: string;
+        medium: string;
+        light: string;
+      };
+      green: {
         primary: string;
         medium: string;
         light: string;
@@ -140,6 +149,13 @@ declare module "@emotion/react" {
         lineHeight: string;
         color: string;
       };
+      bodyLG: {
+        fontFamily: string;
+        fontWeight: string;
+        fontSize: string;
+        lineHeight: string;
+        color: string;
+      };
       bodyMD: {
         fontFamily: string;
         fontWeight: string;
@@ -148,6 +164,13 @@ declare module "@emotion/react" {
         color: string;
       };
       bodySM: {
+        fontFamily: string;
+        fontWeight: string;
+        fontSize: string;
+        lineHeight: string;
+        color: string;
+      };
+      bodySMBold: {
         fontFamily: string;
         fontWeight: string;
         fontSize: string;

@@ -1,7 +1,9 @@
 import { lighten, darken } from "polished";
 const darkMode = process.env.NEXT_PUBLIC_DARK_MODE || "false";
+const simpleSignup = process.env.NEXT_PUBLIC_SIMPLE_SIGNUP || "true";
 export const theme = {
   isDarkMode: darkMode === "true",
+  isSimpleSignup: simpleSignup === "true",
   colors: {
     gray: {
       dark: "#333",
@@ -11,11 +13,13 @@ export const theme = {
       background: "#eee"
     },
     black: {
+      dark: "#333",
       primary: "#000",
       medium: "#585858",
       light: lighten(0.33, "#000")
     },
     white: {
+      dark: "#ccc",
       primary: "#fff",
       medium: lighten(0.66, "#fff"),
       light: "#f9f9f9"
@@ -45,6 +49,11 @@ export const theme = {
       primary: "#A5D8BC",
       medium: darken(0.1, "#A5D8BC"),
       light: lighten(0.33, "#A5D8BC")
+    },
+    green: {
+      primary: "#006400",
+      medium: lighten(0.66, "#006400"),
+      light: lighten(0.33, "#006400")
     },
     red: {
       primary: "#842151",
@@ -90,45 +99,52 @@ export const theme = {
   },
   typography: {
     titleXXL: {
-      fontFamily: "Anybody Light",
+      fontFamily: "ibmplexmono_body_bold",
       fontWeight: "bold",
       fontSize: "72px",
       lineHeight: "86px",
       color: "#000"
     },
     titleXL: {
-      fontFamily: "Anybody Light",
+      fontFamily: "ibmplexmono_body_bold",
       fontWeight: "bold",
       fontSize: "33.8681px",
       lineHeight: "41px",
       color: "#000"
     },
     titleLG: {
-      fontFamily: "Anybody Light",
+      fontFamily: "ibmplexmono_body_bold",
       fontWeight: "bold",
       fontSize: "24px",
       lineHeight: "30px",
       color: "#000"
     },
     titleMD: {
-      fontFamily: "Anybody ExtraLight",
+      fontFamily: "ibmplexmono_body_bold",
       fontWeight: "bold",
       fontSize: "20px",
       lineHeight: "24px",
       color: "#000"
     },
     titleSM: {
-      fontFamily: "Anybody ExtraLight",
+      fontFamily: "ibmplexmono_body_bold",
       fontWeight: "normal",
       fontSize: "14px",
       lineHeight: "1.5rem",
       color: "#000"
     },
     titleXS: {
-      fontFamily: "Anybody ExtraLight",
+      fontFamily: "ibmplexmono_body_bold",
       fontWeight: "normal",
       fontSize: "10px",
       lineHeight: "0.9rem",
+      color: "#000"
+    },
+    bodyLG: {
+      fontFamily: "Anybody ExtraLight",
+      fontWeight: "normal",
+      fontSize: "20px",
+      lineHeight: "22px",
       color: "#000"
     },
     bodyMD: {
@@ -141,6 +157,13 @@ export const theme = {
     bodySM: {
       fontFamily: "Special Elite",
       fontWeight: "normal",
+      fontSize: "14px",
+      lineHeight: "16px",
+      color: "#000"
+    },
+    bodySMBold: {
+      fontFamily: "Anybody Light",
+      fontWeight: "bold",
       fontSize: "14px",
       lineHeight: "16px",
       color: "#000"

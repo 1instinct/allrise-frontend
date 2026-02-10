@@ -1,16 +1,15 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useMediaQuery } from "react-responsive";
 import { useRouter } from "next/router";
-import Link from "next/link";
+import Image from "next/image";
 import { Badge } from "@material-ui/core";
 import Sticky from "react-sticky-el";
 import { HeaderProps } from "./types";
 import { useAuth } from "../../config/auth";
 import { useCart } from "../../hooks/useCart";
-import { MyLogo } from "../Layout/Layout";
+import { useFavorites } from "../../hooks/useFavorites";
+import { useStore } from "../../hooks/useStore";
 import SearchBar from "../SearchBar";
-import { MainMenu } from "../MainMenu";
-import { menusData } from "../MainMenu/data/menusData";
 import { CartSidebar } from "../CartSidebar/CartSidebar";
 import { SocialLinks } from "..";
 
@@ -21,10 +20,10 @@ import {
   LogoDiv,
   HeaderDiv,
   LinkDiv,
-  BottomHeader,
-  Category,
-  UserIconMo,
-  CartMo,
+  // BottomHeader,
+  // Category,
+  // UserIconMo,
+  // CartMo,
   CartToggle,
   HeaderAccount,
   HeaderOptions,
@@ -35,15 +34,7 @@ import {
   AccountMenu,
   AccountOption
 } from "./Header.styles";
-
-const dummyCategories = [
-  "Best Sellers",
-  "Latest",
-  "Seasonal",
-  "Luxury",
-  "On Sale",
-  "Coming Soon"
-];
+import { Logo } from "@components/shared/Logo";
 
 export const Header: React.FC<HeaderProps> = ({ darkMode }) => {
   const router = useRouter();
@@ -66,6 +57,8 @@ export const Header: React.FC<HeaderProps> = ({ darkMode }) => {
     isLoading: cartIsLoading,
     isError: cartHasError
   } = useCart();
+
+  const { data: favoritesData } = useFavorites(1);
 
   const handleAccount = (event: any) => {
     setAccountElem(event.currentTarget);
@@ -125,9 +118,37 @@ export const Header: React.FC<HeaderProps> = ({ darkMode }) => {
                   horizontal: "center"
                 }}
               >
-                <AccountOption>
-                  <div>Account Settings</div>
-                </AccountOption>
+                <LinkDiv href="/account" isActive={pathname !== "/account"}>
+                  <AccountOption>
+                    <div>My Account</div>
+                  </AccountOption>
+                </LinkDiv>
+
+                <LinkDiv
+                  href="/account/favorites"
+                  isActive={pathname !== "/account/favorites"}
+                >
+                  <AccountOption>
+                    <div>My Favorites</div>
+                  </AccountOption>
+                </LinkDiv>
+
+                <LinkDiv
+                  href="/account/orders"
+                  isActive={pathname !== "/account/orders"}
+                >
+                  <AccountOption>
+                    <div>My Orders</div>
+                  </AccountOption>
+                </LinkDiv>
+                <LinkDiv
+                  href="/account/settings"
+                  isActive={pathname !== "/account/settings"}
+                >
+                  <AccountOption>
+                    <div>Account Settings</div>
+                  </AccountOption>
+                </LinkDiv>
                 <AccountOption>
                   <div>Need Help?</div>
                 </AccountOption>
@@ -136,28 +157,36 @@ export const Header: React.FC<HeaderProps> = ({ darkMode }) => {
                   <div onClick={logout}>Logout</div>
                 </AccountOption>
               </AccountMenu>
-              {/* <UserIconMo src={"/user.png"} /> */}
-              <Badge badgeContent={4} color="secondary">
-                <FavoriteIcon />
-              </Badge>
+              <LinkDiv
+                href="/account/favorites"
+                isActive={pathname !== "/account/favorites"}
+              >
+                <Badge
+                  badgeContent={favoritesData?.meta?.total_count || 0}
+                  color="secondary"
+                  overlap="rectangular"
+                >
+                  <FavoriteIcon />
+                </Badge>
+              </LinkDiv>
             </HeaderAccount>
           ) : (
             <HeaderOptions>
               <LinkDiv href="/login" isActive={pathname !== "/login"}>
                 LOGIN
               </LinkDiv>
-              <LinkDiv
-                href="/authenticate/signup"
-                isActive={pathname !== "/authenticate/signup"}
-              >
+              <LinkDiv href="/signup" isActive={pathname !== "/signup"}>
                 SIGN UP
               </LinkDiv>
             </HeaderOptions>
           )}
           <CartToggle>
             <Badge
-              badgeContent={cartData ? cartData.data.attributes.item_count : 0}
+              badgeContent={
+                cartData ? cartData?.data?.attributes?.item_count : 0
+              }
               color="primary"
+              overlap="rectangular"
             >
               <CartSidebar isVisible={cartVisible} toggle={toggleCart} />
             </Badge>

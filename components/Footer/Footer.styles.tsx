@@ -1,6 +1,11 @@
 import styled from "@emotion/styled";
+import Link from "next/link";
+import isPropValid from "@emotion/is-prop-valid";
 export const Container = styled.div`
-  background: ${(p) => p.theme.colors.black.primary};
+  background: ${(p) =>
+    p.theme.isDarkMode
+      ? p.theme.colors.black.primary
+      : p.theme.colors.white.primary};
   padding-top: 41px;
   color: ${(p) =>
     p.theme.isDarkMode
@@ -16,13 +21,37 @@ export const LogoDiv = styled.div`
   justify-content: center;
   align-items: center;
 `;
+export interface LinkDivProps {
+  isActive: boolean;
+  props?: any;
+}
+export const LinkDiv = styled(Link, {
+  shouldForwardProp: (prop) => isPropValid(prop) && prop !== "isActive"
+})<LinkDivProps>`
+  font-size: 14px;
+  text-decoration: none;
+  ${(p) =>
+    p.isActive
+      ? "color: " +
+        (p.theme.isDarkMode
+          ? p.theme.colors.white.dark
+          : p.theme.colors.black.medium)
+      : `
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+  `}
+  &:hover {
+    color: ${(p) => p.theme.colors.brand.primary};
+  }
+`;
 export const Grid = styled.div`
   display: grid;
   padding: 20px 260px;
   justify-content: space-between;
   grid-template-columns: 111px 148px 67px 173px;
   justify-items: center;
-  font-family: "Bebas Neue";
+  font-family: ${(p) => p.theme.typography.titleSM.fontFamily};
   @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
     display: flex;
     flex-direction: column;
@@ -49,7 +78,7 @@ export const Column = styled.div`
   flex-direction: column;
 `;
 export const ColumnTitle = styled.div`
-  font-family: "Bebas Neue";
+  font-family: ${(p) => p.theme.typography.titleSM.fontFamily};
   font-size: 14px;
   line-height: 17px;
   color: ${(p) =>
@@ -67,14 +96,14 @@ export const ColumnTitle = styled.div`
   }
 `;
 export const ColumnSubTitle = styled.div`
-  font-family: "Bebas Neue";
+  font-family: ${(p) => p.theme.typography.titleSM.fontFamily};
 `;
 export const LinkItem = styled.a`
   font-size: 14px;
   line-height: 150%;
   color: ${(p) => p.theme.colors.gray.medium};
   font-weight: 400;
-  font-family: "Bebas Neue";
+  font-family: ${(p) => p.theme.typography.bodyMD.fontFamily};
 `;
 export const Description = styled.div`
   color: ${(p) => p.theme.colors.gray.medium};
@@ -82,7 +111,7 @@ export const Description = styled.div`
   line-height: 150%;
   font-weight: 400;
   margin-bottom: 5px;
-  font-family: "Bebas Neue";
+  font-family: ${(p) => p.theme.typography.bodyMD.fontFamily};
 `;
 export const IconLink = styled.a``;
 export const IconLinkWrapper = styled.div`

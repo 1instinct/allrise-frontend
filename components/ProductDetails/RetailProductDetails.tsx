@@ -12,6 +12,8 @@ import {
   useStreams,
   useVariants
 } from "../../hooks";
+import { useToggleFavorite, useCheckFavorite } from "../../hooks/useFavorites";
+import { useAuth } from "../../config/auth";
 import { Layout, LoadingWrapper, Loading } from "../components";
 import { useProduct, fetchProduct } from "../../hooks/useProduct";
 import { useMutation, useQueryClient } from "react-query";
@@ -19,7 +21,6 @@ import { addItemToCart } from "../../hooks/useCart";
 import { QueryKeys } from "../../hooks/queryKeys";
 import * as tracking from "../../config/tracking";
 import Featured from "../Home/Featured";
-import PolProductList from "../PolProductList";
 import { ProductList } from "../ProductList";
 import { FourOhFour } from "../404/FourOhFour";
 import { useMediaQuery } from "react-responsive";
@@ -55,7 +56,8 @@ import {
   ColorsRow,
   ColorsCell,
   BuyButton,
-  PropertyName
+  PropertyName,
+  FavoriteButton
 } from "./ProductDetails.styles";
 import { boolean } from "yup";
 import { size } from "polished";
@@ -84,16 +86,17 @@ const productColors: ColorOptionType[] = [
 ];
 
 interface RetailProductDetailsProps {
-  props: any;
   wholesale?: boolean;
+  [key: string]: any;
 }
 
 export const RetailProductDetails = ({
   wholesale,
-  props
+  ...props
 }: RetailProductDetailsProps) => {
   const router = useRouter();
   const isMobile = useMediaQuery({ maxWidth: 767 });
+  const { user } = useAuth();
   const { asPath: productSlug } = router;
   const {
     data: thisProduct,
@@ -102,19 +105,49 @@ export const RetailProductDetails = ({
     isError,
     error: productError
   } = useProduct(`${productSlug.toLowerCase().replace("/", "")}`);
+
+  const defaultVariantData =
+    thisProduct?.data?.relationships?.default_variant?.data;
+  const defaultVariantId = Array.isArray(defaultVariantData)
+    ? defaultVariantData[0]?.id || ""
+    : defaultVariantData?.id || "";
+  const { data: favoriteCheck } = useCheckFavorite(defaultVariantId, !!user);
+  const toggleFavorite = useToggleFavorite();
   const productImgs =
     thisProduct &&
     thisProduct?.included?.filter((e: any) => e["type"] === "image");
   const productOptions =
     thisProduct &&
     thisProduct?.included?.filter((e: any) => e["type"] === "option_value");
+
+  // Get variant-specific colors only
+  const variantIds = Array.isArray(
+    thisProduct?.data?.relationships?.variants?.data
+  )
+    ? thisProduct?.data?.relationships?.variants?.data.map((v: any) => v.id)
+    : [];
+  const productVariants = thisProduct?.included?.filter(
+    (item: any) => item.type === "variant" && variantIds?.includes(item.id)
+  );
+  const variantOptionValueIds =
+    productVariants?.flatMap(
+      (variant: any) =>
+        variant.relationships?.option_values?.data?.map((ov: any) => ov.id) ||
+        []
+    ) || [];
   const productColors =
-    productOptions &&
-    productOptions?.filter((e: any) => e.attributes.presentation.includes("#"));
+    productOptions?.filter(
+      (opt: any) =>
+        variantOptionValueIds.includes(opt.id) &&
+        opt.attributes.presentation.includes("#")
+    ) || [];
+
   const productSizes =
     productOptions &&
     productOptions?.filter((e: any) =>
-      e.attributes.presentation.includes("XS" || "S" || "M" || "L" || "XL")
+      ["XS", "S", "M", "L", "XL"].some((size) =>
+        e.attributes.presentation.includes(size)
+      )
     );
   const productProperties =
     thisProduct &&
@@ -174,7 +207,7 @@ export const RetailProductDetails = ({
   // console.log("colors: ", productColors);
 
   const renderSimilarProducts = () => {
-    if (productsAreLoading) return <p>Loading...</p>;
+    if (productsAreLoading) return <Loading />;
     return (
       !isMobile && (
         <ProductList products={productsData} title={"Similar Products"} />
@@ -183,7 +216,7 @@ export const RetailProductDetails = ({
   };
 
   const recommendedProducts = () => {
-    if (productsAreLoading) return <p>Loading...</p>;
+    if (productsAreLoading) return <Loading />;
     return (
       !isMobile && (
         <ProductList products={productsData} title={"Recommended For You"} />
@@ -296,7 +329,7 @@ export const RetailProductDetails = ({
     };
 
     if (variantsAreLoading) {
-      return <p>Loading...</p>;
+      return <Loading />;
     }
 
     return productColors?.map((item, index) => {
@@ -336,7 +369,10 @@ export const RetailProductDetails = ({
       thisProduct &&
       thisProduct?.included?.filter((e: any) => e["type"] === "image");
     const primaryImg =
-      productImgs && productImgs[0]?.attributes?.styles[9]?.url;
+      productImgs &&
+      productImgs[0]?.attributes?.styles.filter(
+        (e: any) => e["width"] == "600"
+      )[0].url;
     const imgSrc = `${process.env.NEXT_PUBLIC_SPREE_API_URL}${primaryImg}`;
     if (productImgs && productImgs.length < 1) {
       return <Loading />;
@@ -351,8 +387,10 @@ export const RetailProductDetails = ({
     return (
       productImgs &&
       productImgs.map((image, index) => {
-        // const img600 = image.attributes.styles.filter((e: any) => e['width'] == '600').url;
-        const imgUrl = image.attributes.styles[9].url;
+        const imgUrl = image.attributes.styles.filter(
+          (e: any) => e["width"] == "600"
+        )[0].url;
+        // const imgUrl = image.attributes.styles[1].url;
         const imgSrc = `${process.env.NEXT_PUBLIC_SPREE_API_URL}${imgUrl}`;
         // console.log(imgSrc);
         return (
@@ -407,6 +445,17 @@ export const RetailProductDetails = ({
   const handleAddToCart = (i: any) => {
     console.log("ITEM: ", i);
     addToCart.mutate(i);
+  };
+
+  const handleToggleFavorite = () => {
+    if (!user) {
+      const redirectUrl = encodeURIComponent(router.asPath);
+      router.push(`/login?redirect=${redirectUrl}`);
+      return;
+    }
+    if (defaultVariantId) {
+      toggleFavorite.mutate(defaultVariantId);
+    }
   };
 
   useEffect(() => {
@@ -493,27 +542,41 @@ export const RetailProductDetails = ({
           <ProductInfoBox>
             <ProductDescription>
               <h2>{thisProduct?.data?.attributes?.name}</h2>
+              <FavoriteButton
+                onClick={handleToggleFavorite}
+                isFavorited={favoriteCheck?.is_favorited}
+              >
+                {favoriteCheck?.is_favorited
+                  ? "❤️ Remove from Favorites"
+                  : "🤍 Add to Favorites"}
+              </FavoriteButton>
               {renderVariantSwatches()}
               <p>{thisProduct?.data?.attributes?.description}</p>
               <hr />
               <Price>${thisProduct?.data?.attributes?.price}</Price>
 
               {/* RETAIL COLOR */}
-              <select>
-                <option selected>Color</option>
-                <option>Blue</option>
-                <option>Beige</option>
-                <option>Pink</option>
-              </select>
+              {productColors && productColors.length > 0 && (
+                <select>
+                  <option selected>Color</option>
+                  {productColors.map((color: any, index: number) => (
+                    <option key={`color-${index}`} value={color.id}>
+                      {color.attributes.name}
+                    </option>
+                  ))}
+                </select>
+              )}
 
               {/* RETAIL SIZE */}
-              <div className="size-selection">
-                <button className="">XS</button>
-                <button className="">S</button>
-                <button className="">M</button>
-                <button className="">L</button>
-                <button className="">XL</button>
-              </div>
+              {productSizes && productSizes.length > 0 && (
+                <div className="size-selection">
+                  {productSizes.map((size: any, index: number) => (
+                    <button key={`size-${index}`} className="">
+                      {size.attributes.presentation}
+                    </button>
+                  ))}
+                </div>
+              )}
 
               <BuyButton className="" onClick={() => handleAddToCart(addItem)}>
                 {/* <BuyButton className="" onClick={addAllToCart}> */}

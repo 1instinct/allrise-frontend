@@ -1,3 +1,4 @@
+"use client";
 import Lottie from "react-lottie";
 import { Layout } from "../components";
 import girlAnimation from "../../data/girl.json";

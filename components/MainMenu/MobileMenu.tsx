@@ -1,7 +1,8 @@
-import React, { Fragment, useState, useCallback } from "react";
+import React, { Fragment, useState, useCallback, useRef } from "react";
 import styled from "@emotion/styled";
 import isPropValid from "@emotion/is-prop-valid";
-import { slide as BurgerMenu } from "react-burger-menu";
+import * as BurgerMenu from "react-burger-menu";
+const Menu = BurgerMenu.slide as unknown as React.ComponentType<any>;
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import Collapse from "@material-ui/core/Collapse";
@@ -30,7 +31,7 @@ const MenuItem = styled(StyledListItem, {
   padding: 0 0 0 ${(props) => props.paddingLeft} !important;
   margin: 5px 0;
   & div span {
-    font-family: "Bebas Neue";
+    font-family: ${(p) => p.theme.typography.titleLG.fontFamily};
   }
 `;
 
@@ -41,6 +42,7 @@ export const MobileMenu = ({
 }: any) => {
   const theme = useTheme();
   const router = useRouter();
+  const menuRef = useRef<HTMLDivElement>(null);
   const currYear = new Date().getFullYear();
   const [open, setOpen] = useState(false);
   const [keyPath, setKeyPath] = useState("");
@@ -99,9 +101,9 @@ export const MobileMenu = ({
             const pathSlug = parentKeyPath + "/" + slug;
 
             return (
-              <Fragment key={pathSlug}>
+              <Fragment key={`${pathSlug}-${index}`}>
                 <MenuItem
-                  key={`${pathSlug}-1`}
+                  key={`${pathSlug}-${index}-item`}
                   paddingLeft={paddingLeft}
                   onClick={() =>
                     handleItemClick(item, hasChildren, pathSlug, slug)
@@ -137,7 +139,7 @@ export const MobileMenu = ({
   };
 
   return (
-    <BurgerMenu
+    <Menu
       width={"66%"}
       isOpen={open}
       onOpen={toggleMenu}
@@ -145,7 +147,7 @@ export const MobileMenu = ({
       styles={theme.isDarkMode ? darkMenuStyles : menuStyles}
       // {...others}
     >
-      {/* <BurgerMenu width={220} isOpen={open} onOpen={toggleMenu} onClose={toggleMenu} {...others}> */}
+      {/* <Menu width={220} isOpen={open} onOpen={toggleMenu} onClose={toggleMenu} {...others}> */}
       {showMenuHeader ? (
         <>
           <div onClick={toggleMenu}>
@@ -166,6 +168,16 @@ export const MobileMenu = ({
         <hr />
         Login
       </MenuItem>
+      <MenuItem
+        paddingLeft={"10px"}
+        onClick={() => {
+          toggleMenu();
+          router.push("/signup");
+        }}
+        button
+      >
+        Sign Up
+      </MenuItem>
       <SocialLinks />
       <MenuFooter>
         <div>
@@ -174,6 +186,6 @@ export const MobileMenu = ({
         </div>
         <div>All Materials Copyright © {currYear} POL Clothing</div>
       </MenuFooter>
-    </BurgerMenu>
+    </Menu>
   );
 };

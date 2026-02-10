@@ -32,7 +32,7 @@ const DesktopMenu: React.FC<IDesktopMenuProps> = (props: IDesktopMenuProps) => {
     if (menusLoading) {
       return [];
     }
-    return menuItems.map((item: any, index: number) => {
+    return menuItems?.map((item: any, index: number) => {
       return (
         <MenuItem
           onMouseEnter={handleMouseEnter.bind(null, item)}
@@ -67,7 +67,7 @@ const DesktopMenu: React.FC<IDesktopMenuProps> = (props: IDesktopMenuProps) => {
   return (
     <Container className={pcWrapClassName}>
       {desktopMenu()}
-      {menuItems.map((item: any, index: any) => {
+      {menuItems?.map((item: any, index: any) => {
         if (item.childrens.length) {
           return (
             <DropDown
