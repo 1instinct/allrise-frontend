@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextApiRequest, NextApiResponse } from "next";
 
 interface Association {
   applinks: {
@@ -15,7 +15,6 @@ interface Component {
   [path: string]: string;
 }
 
-
 export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Association>
@@ -25,14 +24,12 @@ export default function handler(
       details: [
         {
           appIDs: ["5E3H5S4R65.com.allrise.YouJudge"],
-          components: [
-            { "/": "/ios-case/*" }
-          ]
+          components: [{ "/": "/ios-case/*" }]
         }
       ]
     }
   };
 
-  res.setHeader('Content-Type', 'application/json');
+  res.setHeader("Content-Type", "application/json");
   return res.status(200).json(association);
 }
