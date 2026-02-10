@@ -131,13 +131,23 @@ export const QuizText = styled.p`
 
 export const QuizImageWrapper = styled.div`
   width: 100%;
-  height: auto;
+  max-height: 400px;
+  overflow: hidden;
   margin-bottom: -21px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
 `;
 
 export const QuizImage = styled.img`
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
 `;
 
 export const BackButton = styled.button`

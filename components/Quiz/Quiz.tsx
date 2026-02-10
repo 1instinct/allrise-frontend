@@ -376,7 +376,7 @@ export const Quiz = () => {
         </LegalLink>
       </div>
       <QuizWrapper>
-        {availableLanguages.length > 1 && (
+        {availableLanguages.length >= 1 && (
           <LanguageToggleContainer>
             <LanguageToggleSlider
               activeIndex={availableLanguages.indexOf(selectedLanguage)}
