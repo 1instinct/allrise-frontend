@@ -14,6 +14,7 @@ export const QuizContainer = styled.div`
 `;
 
 export const QuizWrapper = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -159,7 +160,7 @@ export const RowOfOptions = styled.div`
 `;
 
 export const YesButton = styled.button`
-  background: #ffda17;
+  background: ${(p) => p.theme.colors.developed.primary};
   color: black;
   font-family: "Hitchcock", sans-serif;
   font-size: 16px;
@@ -168,11 +169,15 @@ export const YesButton = styled.button`
   border: none;
   border-radius: 6px;
   cursor: pointer;
+
+  &:hover {
+    background: ${(p) => p.theme.colors.developed.medium};
+  }
 `;
 
 export const NoButton = styled.button`
-  background: #f7be56;
-  color: black;
+  background: ${(p) => p.theme.colors.red.primary};
+  color: white;
   font-family: "Hitchcock", sans-serif;
   font-size: 16px;
   letter-spacing: 1px;
@@ -180,6 +185,10 @@ export const NoButton = styled.button`
   border: none;
   border-radius: 6px;
   cursor: pointer;
+
+  &:hover {
+    background: ${(p) => p.theme.colors.red.medium};
+  }
 `;
 
 export const CentralControl = styled.div`

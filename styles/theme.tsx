@@ -1,4 +1,4 @@
-import { lighten } from "polished";
+import { lighten, darken } from "polished";
 const darkMode = process.env.NEXT_PUBLIC_DARK_MODE || "false";
 export const theme = {
   isDarkMode: darkMode === "true",
@@ -43,12 +43,12 @@ export const theme = {
     },
     developed: {
       primary: "#A5D8BC",
-      medium: lighten(0.66, "#A5D8BC"),
+      medium: darken(0.1, "#A5D8BC"),
       light: lighten(0.33, "#A5D8BC")
     },
     red: {
       primary: "#842151",
-      medium: lighten(0.66, "#842151"),
+      medium: darken(0.1, "#842151"),
       light: lighten(0.33, "#842151")
     }
   },
