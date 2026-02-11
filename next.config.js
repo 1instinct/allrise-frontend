@@ -40,6 +40,7 @@ loadEnvVariables();
 const isLocalDevEnvironment = !process.env.DEPLOY_ENV;
 module.exports = {
   swcMinify: true,
+  transpilePackages: ["react-responsive-masonry"],
   async redirects() {
     return [
       {

@@ -107,7 +107,7 @@ const ButtonLink = styled.a`
     }
 
     & svg g path {
-      fill: ${(p) => p.theme.colors.brand.bright};
+      fill: ${(p) => p.theme.colors.brand.light};
       transition: 0.5s all ease-in-out;
     }
   }

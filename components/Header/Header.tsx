@@ -86,12 +86,13 @@ export const Header: React.FC<HeaderProps> = ({ darkMode }) => {
         )}
         <LogoDiv>
           <LinkDiv
+            href="/"
             isActive
             onClick={() => {
               router.push("/");
             }}
           >
-            <MyLogo imageFile={logoPath} darkMode={darkMode} />
+            <Logo />
           </LinkDiv>
         </LogoDiv>
         <RightSide>

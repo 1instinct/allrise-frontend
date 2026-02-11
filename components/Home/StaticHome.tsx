@@ -10,7 +10,18 @@ import { dehydrate } from "react-query/hydration";
 import { useMutation, useQueryClient } from "react-query";
 import { fetchProducts, useProducts } from "../../hooks";
 import { ArrowBack, ArrowForward } from "@material-ui/icons";
-import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
+import dynamic from "next/dynamic";
+const Masonry = dynamic(
+  () => import("react-responsive-masonry").then((mod) => mod.default) as any,
+  { ssr: false }
+);
+const ResponsiveMasonry: any = dynamic(
+  () =>
+    import("react-responsive-masonry").then(
+      (mod) => mod.ResponsiveMasonry
+    ) as any,
+  { ssr: false }
+);
 import { CarouselProvider, Slider } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
 
@@ -35,7 +46,7 @@ import {
   ProductTeaserContainer,
   ProductTeaserBackgroundCircle,
   ProductTeaserImage
-} from "./Home.styles";
+} from "./StaticHome.styles";
 
 const siteTitle = process.env.NEXT_PUBLIC_SITE_TITLE || "";
 const siteDesc = process.env.NEXT_PUBLIC_SITE_DESC || "";
@@ -48,7 +59,7 @@ const mailerId = process.env.NEXT_PUBLIC_MAILCHIMP_ID || "";
 const mailerUser = process.env.NEXT_PUBLIC_MAILCHIMP_U || "";
 const spreeApiUrl = process.env.NEXT_PUBLIC_SPREE_API_URL || "";
 
-export const Home = () => {
+export const StaticHome = () => {
   const mailChimpUrl = `${mailerUrl}?u=${mailerId}&id=${mailerUser}`;
   const [isSlideshow, setIsSlideshow] = useState(false);
 
@@ -153,9 +164,7 @@ export const Home = () => {
           <ResponsiveMasonry
             columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}
           >
-            <Masonry>
-              {renderProductThumbnails(productsData, setIsSlideshow)}
-            </Masonry>
+            {renderProductThumbnails(productsData, setIsSlideshow)}
           </ResponsiveMasonry>
         )}
         {siteDesc !== "" && <Text>{siteDesc}</Text>}

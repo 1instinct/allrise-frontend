@@ -91,7 +91,11 @@ const LanguageToggleContainer = styled.div`
   backdrop-filter: blur(8px);
 `;
 
-const LanguageToggleSlider = styled.div<{ activeIndex: number }>`
+interface LanguageToggleSliderProps {
+  activeIndex: number;
+}
+
+const LanguageToggleSlider = styled.div<LanguageToggleSliderProps>`
   position: absolute;
   top: 4px;
   left: ${(props) => 4 + props.activeIndex * 36}px;

@@ -3,6 +3,12 @@ import { transparentize } from "polished";
 import { ButtonBack, ButtonNext } from "pure-react-carousel";
 import { Slider, Slide, ImageWithZoom } from "pure-react-carousel";
 
+export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;

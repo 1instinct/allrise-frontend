@@ -37,7 +37,7 @@ export const Logo = styled.img`
   height: 85px;
 
   @media screen and (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
-    width: 90%;
+    width: 50%;
     height: auto;
   }
 `;
