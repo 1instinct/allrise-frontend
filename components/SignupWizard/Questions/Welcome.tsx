@@ -4,10 +4,6 @@ import styled from "@emotion/styled";
 // import { Field, useFormikContext } from 'formik';
 // import { useMediaQuery } from 'react-responsive';
 import { Carousel } from "react-responsive-carousel";
-import Lottie from "react-lottie";
-import streamAnimation from "@data/stream.json";
-import shippingAnimation from "@data/shipping.json";
-import rewardAnimation from "@data/reward.json";
 
 // Local
 import TipBot from "../../TipBot";
@@ -71,33 +67,6 @@ const shortName = process.env.NEXT_PUBLIC_SHORT_TITLE;
 
 export const Welcome = () => {
   // const { errors, touched } = useFormikContext();
-
-  const streamAnimationOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: streamAnimation,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice"
-    }
-  };
-
-  const shippingAnimationOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: shippingAnimation,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice"
-    }
-  };
-
-  const rewardAnimationOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: rewardAnimation,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice"
-    }
-  };
 
   const speechMarkup = useCallback(() => {
     return {

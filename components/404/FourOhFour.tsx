@@ -1,5 +1,5 @@
 "use client";
-import Lottie from "react-lottie";
+import dynamic from "next/dynamic";
 import { Layout } from "../components";
 import girlAnimation from "../../data/girl.json";
 import {
@@ -7,6 +7,8 @@ import {
   NotFoundTitle,
   NotFoundSubtitle
 } from "./FourOhFour.styles";
+
+const Lottie = dynamic(() => import("react-lottie"), { ssr: false });
 
 const animationOptions = {
   loop: true,
