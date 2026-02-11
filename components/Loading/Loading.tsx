@@ -18,7 +18,5 @@ export const LoadingIcon = styled.i`
 `;
 
 export const Loading = () => {
-  return (
-    <LoadingWrapper />
-  );
+  return <LoadingWrapper />;
 };
