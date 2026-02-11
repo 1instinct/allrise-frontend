@@ -24,7 +24,10 @@ export default function handler(
       details: [
         {
           appIDs: ["5E3H5S4R65.com.allrise.YouJudge"],
-          components: [{ "/": "/ios-case/*" }]
+          components: [
+            { "/": "/ios-case/*" },
+            { "/": "/app-login" }
+          ]
         }
       ]
     }
