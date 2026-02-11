@@ -44,12 +44,11 @@ const isLocalDevEnvironment = !process.env.DEPLOY_ENV;
 module.exports = {
   swcMinify: true,
   transpilePackages: ["react-responsive-masonry"],
-  async redirects() {
+  async rewrites() {
     return [
       {
         source: "/.well-known/:file",
-        destination: "/api/.well-known/:file",
-        permanent: false
+        destination: "/api/.well-known/:file"
       }
     ];
   },
