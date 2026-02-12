@@ -222,3 +222,16 @@ export const CategoryName = styled.h3`
   margin: 0;
   padding: 0;
 `;
+
+export const ApiErrorText = styled.p`
+  font-family: ${({ theme }: any) => theme.typography.bodySM.fontFamily};
+  font-size: ${({ theme }: any) => theme.typography.bodySM.fontSize};
+  font-weight: ${({ theme }: any) => theme.typography.bodySM.fontWeight};
+  line-height: ${({ theme }: any) => theme.typography.bodySM.lineHeight};
+  color: ${(p) =>
+    p.theme.isDarkMode
+      ? p.theme.colors.white.primary
+      : p.theme.colors.black.primary};
+  text-align: center;
+  margin-top: 20px;
+`;

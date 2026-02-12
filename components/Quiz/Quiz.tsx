@@ -19,7 +19,8 @@ import {
   BackButton,
   YesButton,
   NoButton,
-  Logo
+  Logo,
+  ApiErrorText
 } from "./Quiz.styles";
 import { useQuestion } from "../../hooks/useQuiz";
 import {
@@ -266,7 +267,11 @@ export const Quiz = () => {
   const router = useRouter();
   const { id } = router.query;
   console.log("QUIZ ID: ", id);
-  const { data: caseData, isLoading } = useQuestion((id as string) || "");
+  const {
+    data: caseData,
+    isLoading,
+    isError
+  } = useQuestion((id as string) || "");
   const [isPlaying, setIsPlaying] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("en");
   const [rulingResult, setRulingResult] = useState<RulingResult>(undefined);
@@ -361,6 +366,29 @@ export const Quiz = () => {
   };
 
   if (isLoading) return <div>Loading...</div>;
+  if (isError || !caseData)
+    return (
+      <QuizContainer>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            padding: "40px 20px",
+            gap: "10px"
+          }}
+        >
+          <Logo src="/images/allrise/logo-shadow.png" alt="AllRise Logo" />
+          <ApiErrorText style={{ fontFamily: "Special, sans-serif" }}>
+            Case not available right now. Please try again later.
+          </ApiErrorText>
+          <LegalLink href={`/ios-case/${id}`}>
+            Open case in the All Rise! App
+          </LegalLink>
+        </div>
+      </QuizContainer>
+    );
 
   return (
     <QuizContainer>
