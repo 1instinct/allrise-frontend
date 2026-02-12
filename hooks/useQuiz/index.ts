@@ -5,7 +5,8 @@ const fetchQuestion = async (id: string) => {
   const username = process.env.NEXT_PUBLIC_QUIZ_API_USERNAME || "";
   const password = process.env.NEXT_PUBLIC_QUIZ_API_PASSWORD || "";
   const loginResponse = await axios.post(
-    `https://lawsuits.allrise.app/api/v1/login?username=${username}&password=${password}`
+    "https://lawsuits.allrise.app/api/v1/login",
+    { token: username, password }
   );
   const token = loginResponse.data.access;
   const response = await axios.get(
