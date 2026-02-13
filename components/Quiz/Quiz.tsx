@@ -34,7 +34,7 @@ import {
   RulingAudioButton,
   LanguageToggleContainer,
   LanguageToggleSlider,
-  LanguageFlagButton,
+  LanguageFlagButton
 } from "./Quiz.styles";
 // Case data is now fetched server-side via getServerSideProps
 import {
