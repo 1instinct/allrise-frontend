@@ -21,6 +21,7 @@ import {
   NoButton,
   Logo,
   ApiErrorText,
+  QuizLegalFooter,
   overlayFadeIn,
   popupSlideUp,
   RulingResult,
@@ -291,6 +292,14 @@ export const Quiz = ({ caseData }: { caseData: any }) => {
           </RowOfOptions>
         </QuizInfo>
       </QuizWrapper>
+
+      <QuizLegalFooter>
+        <a href="https://people.allrise.app/terms">Terms</a>
+        <span>|</span>
+        <a href="https://people.allrise.app/privacy">Privacy</a>
+        <span>|</span>
+        <a href="mailto:help@allrise.co">Help</a>
+      </QuizLegalFooter>
 
       {showRuling && (
         <RulingOverlay onClick={closeRuling}>

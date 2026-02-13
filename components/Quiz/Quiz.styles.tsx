@@ -20,17 +20,12 @@ export const QuizWrapper = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  flex: 1;
   align-items: center;
   margin: 0 auto;
   padding: 0;
+  width: 100%;
   max-width: 800px;
   background: white;
-  @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-    width: 100%;
-    height: auto;
-    margin-bottom: -150px;
-  }
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.11);
 `;
 
@@ -424,5 +419,30 @@ export const RulingAudioButton = styled.button<{ isPlaying: boolean }>`
 
   &:active {
     transform: translateY(0);
+  }
+`;
+
+export const QuizLegalFooter = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 30px 0;
+  font-family: ${({ theme }: any) => theme.typography.bodySM.fontFamily};
+  font-size: ${({ theme }: any) => theme.typography.bodySM.fontSize};
+  font-weight: ${({ theme }: any) => theme.typography.bodySM.fontWeight};
+  line-height: ${({ theme }: any) => theme.typography.bodySM.lineHeight};
+  color: ${(p) => p.theme.colors.black.primary};
+
+  a {
+    color: ${(p) => p.theme.colors.black.primary};
+    margin: 0 0.5rem;
+    text-decoration: underline;
+    text-decoration-skip-ink: auto;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.7;
+    }
   }
 `;
