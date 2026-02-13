@@ -98,6 +98,8 @@ export const Quiz = ({ caseData }: { caseData: any }) => {
   const [showRuling, setShowRuling] = useState(false);
   const [isRulingPlaying, setIsRulingPlaying] = useState(false);
   const rulingAudioRef = useRef<HTMLAudioElement | null>(null);
+  const crmUrl = process.env.NEXT_PUBLIC_CRM_URL || "https://people.allrise.app";
+  const companyEmail = process.env.NEXT_PUBLIC_COMPANY_EMAIL || "help@allrise.app";
 
   const defaultQuizImage = useMemo(() => {
     const randomIndex = Math.floor(Math.random() * nativeAds.length);
@@ -294,11 +296,11 @@ export const Quiz = ({ caseData }: { caseData: any }) => {
       </QuizWrapper>
 
       <QuizLegalFooter>
-        <a href="https://people.allrise.app/terms">Terms</a>
+        <a href={`${crmUrl}/terms`}>Terms</a>
         <span>|</span>
-        <a href="https://people.allrise.app/privacy">Privacy</a>
+        <a href={`${crmUrl}/privacy`}>Privacy</a>
         <span>|</span>
-        <a href="mailto:help@allrise.co">Help</a>
+        <a href={`mailto:${companyEmail}`}>Help</a>
       </QuizLegalFooter>
 
       {showRuling && (
