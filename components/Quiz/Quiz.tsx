@@ -98,8 +98,10 @@ export const Quiz = ({ caseData }: { caseData: any }) => {
   const [showRuling, setShowRuling] = useState(false);
   const [isRulingPlaying, setIsRulingPlaying] = useState(false);
   const rulingAudioRef = useRef<HTMLAudioElement | null>(null);
-  const crmUrl = process.env.NEXT_PUBLIC_CRM_URL || "https://people.allrise.app";
-  const companyEmail = process.env.NEXT_PUBLIC_COMPANY_EMAIL || "help@allrise.app";
+  const crmUrl =
+    process.env.NEXT_PUBLIC_CRM_URL || "https://people.allrise.app";
+  const companyEmail =
+    process.env.NEXT_PUBLIC_COMPANY_EMAIL || "help@allrise.app";
 
   const defaultQuizImage = useMemo(() => {
     const randomIndex = Math.floor(Math.random() * nativeAds.length);
