@@ -98,6 +98,7 @@ export const Quiz = ({ caseData }: { caseData: any }) => {
   const [showRuling, setShowRuling] = useState(false);
   const [isRulingPlaying, setIsRulingPlaying] = useState(false);
   const rulingAudioRef = useRef<HTMLAudioElement | null>(null);
+  const summaryAudioRef = useRef<HTMLAudioElement | null>(null);
   const crmUrl =
     process.env.NEXT_PUBLIC_CRM_URL || "https://people.allrise.app";
   const companyEmail =
@@ -125,6 +126,13 @@ export const Quiz = ({ caseData }: { caseData: any }) => {
   }, [availableLanguages]);
 
   const playSummary = () => {
+    if (isPlaying && summaryAudioRef.current) {
+      summaryAudioRef.current.pause();
+      summaryAudioRef.current = null;
+      setIsPlaying(false);
+      return;
+    }
+
     const narration =
       caseData?.narrations?.find(
         (n: any) =>
@@ -132,18 +140,22 @@ export const Quiz = ({ caseData }: { caseData: any }) => {
       ) || caseData?.narrations[0];
     if (!narration) return;
 
-    const audio = new Audio(narration.url);
-    if (isPlaying) {
-      audio.pause();
-      setIsPlaying(false);
-    } else {
-      setIsPlaying(true);
-      audio.play().then(() => {
-        audio.addEventListener("ended", () => {
-          setIsPlaying(false);
-        });
-      });
+    // Stop ruling audio if playing
+    if (rulingAudioRef.current) {
+      rulingAudioRef.current.pause();
+      rulingAudioRef.current = null;
+      setIsRulingPlaying(false);
     }
+
+    const audio = new Audio(narration.url);
+    summaryAudioRef.current = audio;
+    setIsPlaying(true);
+    audio.play().then(() => {
+      audio.addEventListener("ended", () => {
+        setIsPlaying(false);
+        summaryAudioRef.current = null;
+      });
+    });
   };
 
   const answer = (guess: string) => {
@@ -169,6 +181,13 @@ export const Quiz = ({ caseData }: { caseData: any }) => {
       caseData?.narrations?.find((n: any) => n.narration_type === "ruling");
     if (!narration) return;
 
+    // Stop summary audio if playing
+    if (summaryAudioRef.current) {
+      summaryAudioRef.current.pause();
+      summaryAudioRef.current = null;
+      setIsPlaying(false);
+    }
+
     const audio = new Audio(narration.url);
     rulingAudioRef.current = audio;
     setIsRulingPlaying(true);
@@ -185,6 +204,11 @@ export const Quiz = ({ caseData }: { caseData: any }) => {
       rulingAudioRef.current.pause();
       rulingAudioRef.current = null;
     }
+    if (summaryAudioRef.current) {
+      summaryAudioRef.current.pause();
+      summaryAudioRef.current = null;
+    }
+    setIsPlaying(false);
     setIsRulingPlaying(false);
     setShowRuling(false);
   };
@@ -202,7 +226,9 @@ export const Quiz = ({ caseData }: { caseData: any }) => {
             gap: "10px"
           }}
         >
-          <Logo src="/images/allrise/logo-shadow.png" alt="AllRise Logo" />
+          <a href="/">
+            <Logo src="/images/allrise/logo-shadow.png" alt="AllRise Logo" />
+          </a>
           <ApiErrorText style={{ fontFamily: "Special, sans-serif" }}>
             Case not available right now. Please try again later.
           </ApiErrorText>
@@ -225,7 +251,9 @@ export const Quiz = ({ caseData }: { caseData: any }) => {
           gap: "10px"
         }}
       >
-        <Logo src="/images/allrise/logo-shadow.png" alt="AllRise Logo" />
+        <a href="/">
+          <Logo src="/images/allrise/logo-shadow.png" alt="AllRise Logo" />
+        </a>
         <LegalLink href={`/ios-case/${id}`}>
           Open case in the All Rise! App
         </LegalLink>
