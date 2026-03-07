@@ -10,7 +10,10 @@ export const StickyBannerAd: React.FC = () => {
 
   return (
     <StickyBannerWrapper>
-      <BannerCloseButton onClick={() => setDismissed(true)} aria-label="Close ad">
+      <BannerCloseButton
+        onClick={() => setDismissed(true)}
+        aria-label="Close ad"
+      >
         &times;
       </BannerCloseButton>
       <AdUnit
