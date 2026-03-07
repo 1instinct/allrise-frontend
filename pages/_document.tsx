@@ -201,6 +201,14 @@ class MyDocument extends Document {
               `
             }}
           />
+          {/* Google AdSense */}
+          {process.env.NEXT_PUBLIC_ADSENSE_PUB_ID && (
+            <script
+              async
+              src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_PUB_ID}`}
+              crossOrigin="anonymous"
+            />
+          )}
           <script
             src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_PLACES_API_KEY}&libraries=places`}
           />
