@@ -23,6 +23,7 @@ import * as tracking from "../../config/tracking";
 import Featured from "../Home/Featured";
 import { ProductList } from "../ProductList";
 import { FourOhFour } from "../404/FourOhFour";
+import { AdUnit } from "../AdUnit";
 import { useMediaQuery } from "react-responsive";
 import homeData from "../Home/home.json";
 import { CarouselProvider, Slider } from "pure-react-carousel";
@@ -374,32 +375,37 @@ export const RetailProductDetails = ({
         (e: any) => e["width"] == "600"
       )[0].url;
     const imgSrc = `${process.env.NEXT_PUBLIC_SPREE_API_URL}${primaryImg}`;
-    if (productImgs && productImgs.length < 1) {
-      return <Loading />;
+
+    // No images — show an ad instead
+    if (!productImgs || productImgs.length < 1) {
+      return (
+        <AdUnit
+          slotId={process.env.NEXT_PUBLIC_ADSENSE_SLOT_DISPLAY || ""}
+          format="rectangle"
+          style={{ minHeight: "400px" }}
+        />
+      );
     }
-    if (productImgs && productImgs.length == 1) {
+
+    if (productImgs.length == 1) {
       return (
         <StyledSlide index={0}>
           <StyledImageWithZoom src={imgSrc} />
         </StyledSlide>
       );
     }
-    return (
-      productImgs &&
-      productImgs.map((image, index) => {
-        const imgUrl = image.attributes.styles.filter(
-          (e: any) => e["width"] == "600"
-        )[0].url;
-        // const imgUrl = image.attributes.styles[1].url;
-        const imgSrc = `${process.env.NEXT_PUBLIC_SPREE_API_URL}${imgUrl}`;
-        // console.log(imgSrc);
-        return (
-          <StyledSlide key={`image-${index}`} index={index}>
-            <StyledImageWithZoom src={imgSrc} />
-          </StyledSlide>
-        );
-      })
-    );
+
+    return productImgs.map((image, index) => {
+      const imgUrl = image.attributes.styles.filter(
+        (e: any) => e["width"] == "600"
+      )[0].url;
+      const imgSrc = `${process.env.NEXT_PUBLIC_SPREE_API_URL}${imgUrl}`;
+      return (
+        <StyledSlide key={`image-${index}`} index={index}>
+          <StyledImageWithZoom src={imgSrc} />
+        </StyledSlide>
+      );
+    });
   }, [thisProduct]);
 
   const renderVariantSwatches = useCallback(() => {
@@ -509,34 +515,31 @@ export const RetailProductDetails = ({
         </Head>
         <ProductContainer className="product-container">
           <ProductImageCarousel>
-            <CarouselProvider
-              naturalSlideWidth={600}
-              naturalSlideHeight={600}
-              totalSlides={productImgs ? productImgs.length : 1}
-              // totalSlides={3}
-              isIntrinsicHeight
-              touchEnabled
-              infinite={productImgs ? true : false}
-            >
-              <StyledSlider className="slider">
-                {/* <Slide index={1} style={{ height: "500px" }}>
-                  <ImageWithZoom src={source} />
-                </Slide>
-                <Slide index={2} style={{ height: "500px" }}>
-                  <ImageWithZoom src={source} />
-                </Slide> */}
-                {renderProductImgs()}
-              </StyledSlider>
+            {productImgs && productImgs.length > 0 ? (
+              <CarouselProvider
+                naturalSlideWidth={600}
+                naturalSlideHeight={600}
+                totalSlides={productImgs.length}
+                isIntrinsicHeight
+                touchEnabled
+                infinite
+              >
+                <StyledSlider className="slider">
+                  {renderProductImgs()}
+                </StyledSlider>
 
-              <CarouselNav>
-                <CarouselBackButton>
-                  <ArrowBack />
-                </CarouselBackButton>
-                <CarouselNextButton>
-                  <ArrowForward />
-                </CarouselNextButton>
-              </CarouselNav>
-            </CarouselProvider>
+                <CarouselNav>
+                  <CarouselBackButton>
+                    <ArrowBack />
+                  </CarouselBackButton>
+                  <CarouselNextButton>
+                    <ArrowForward />
+                  </CarouselNextButton>
+                </CarouselNav>
+              </CarouselProvider>
+            ) : (
+              renderProductImgs()
+            )}
           </ProductImageCarousel>
 
           <ProductInfoBox>
