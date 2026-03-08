@@ -226,7 +226,7 @@ export const Quiz = ({ caseData }: { caseData: any }) => {
             gap: "10px"
           }}
         >
-          <a href="/">
+          <a href="/" style={{ display: "flex", justifyContent: "center" }}>
             <Logo src="/images/allrise/logo-shadow.png" alt="AllRise Logo" />
           </a>
           <ApiErrorText style={{ fontFamily: "Special, sans-serif" }}>
@@ -251,7 +251,7 @@ export const Quiz = ({ caseData }: { caseData: any }) => {
           gap: "10px"
         }}
       >
-        <a href="/">
+        <a href="/" style={{ display: "flex", justifyContent: "center" }}>
           <Logo src="/images/allrise/logo-shadow.png" alt="AllRise Logo" />
         </a>
         <LegalLink href={`/ios-case/${id}`}>
