@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
 import { Carousel } from "react-responsive-carousel";
+import { AdUnit } from "../AdUnit";
 import {
   QuizContainer,
   QuizWrapper,
@@ -294,7 +295,11 @@ export const Quiz = ({ caseData }: { caseData: any }) => {
               ))}
             </Carousel>
           ) : (
-            <QuizImage src={defaultQuizImage} alt={caseData?.title} />
+            <AdUnit
+              slotId={process.env.NEXT_PUBLIC_ADSENSE_SLOT_DISPLAY || ""}
+              format="rectangle"
+              style={{ minHeight: "300px", width: "100%" }}
+            />
           )}
           <BackButton onClick={() => router.push("/")}>
             <ArrowBack style={{ color: "black" }} />
