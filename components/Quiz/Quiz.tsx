@@ -294,13 +294,7 @@ export const Quiz = ({ caseData }: { caseData: any }) => {
                 </div>
               ))}
             </Carousel>
-          ) : (
-            <AdUnit
-              slotId={process.env.NEXT_PUBLIC_ADSENSE_SLOT_DISPLAY || ""}
-              format="rectangle"
-              style={{ minHeight: "300px", width: "100%" }}
-            />
-          )}
+          ) : null}
           <BackButton onClick={() => router.push("/")}>
             <ArrowBack style={{ color: "black" }} />
           </BackButton>
@@ -337,6 +331,12 @@ export const Quiz = ({ caseData }: { caseData: any }) => {
         <span>|</span>
         <a href={`mailto:${companyEmail}`}>Help</a>
       </QuizLegalFooter>
+
+      <AdUnit
+        slotId={process.env.NEXT_PUBLIC_ADSENSE_SLOT_DISPLAY || ""}
+        format="horizontal"
+        style={{ maxWidth: "600px", width: "100%", margin: "10px auto" }}
+      />
 
       {showRuling && (
         <RulingOverlay onClick={closeRuling}>

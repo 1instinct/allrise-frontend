@@ -376,15 +376,8 @@ export const RetailProductDetails = ({
       )[0].url;
     const imgSrc = `${process.env.NEXT_PUBLIC_SPREE_API_URL}${primaryImg}`;
 
-    // No images — show an ad instead
     if (!productImgs || productImgs.length < 1) {
-      return (
-        <AdUnit
-          slotId={process.env.NEXT_PUBLIC_ADSENSE_SLOT_DISPLAY || ""}
-          format="rectangle"
-          style={{ minHeight: "400px" }}
-        />
-      );
+      return null;
     }
 
     if (productImgs.length == 1) {
