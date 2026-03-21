@@ -130,9 +130,21 @@ export const QuizText = styled.p`
 
 export const QuizImageWrapper = styled.div`
   width: 100%;
-  max-height: 400px;
+  height: 350px;
   overflow: hidden;
   margin-bottom: -21px;
+
+  .carousel-root,
+  .carousel,
+  .slider-wrapper,
+  .slider,
+  .slide {
+    height: 100%;
+  }
+
+  .slide > div {
+    height: 100%;
+  }
 
   img {
     width: 100%;
