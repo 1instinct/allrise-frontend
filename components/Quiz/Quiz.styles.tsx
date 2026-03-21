@@ -13,7 +13,7 @@ export const QuizContainer = styled.div`
   background: url("/images/allrise/law-pattern.png"),
     linear-gradient(196.13deg, #ffda17 -16.74%, #f7be56 89.04%);
   background-attachment: fixed;
-  padding: 40px 0;
+  padding: 0 0 20px;
 `;
 
 export const QuizWrapper = styled.div`
@@ -151,7 +151,7 @@ export const QuizImage = styled.img`
 
 export const BackButton = styled.button`
   position: fixed;
-  top: 50px;
+  top: 12px;
   left: 10px;
   width: 36px;
   height: 36px;

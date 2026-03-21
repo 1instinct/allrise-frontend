@@ -5,8 +5,6 @@ export const AdContainer = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  min-height: 250px;
-  background: ${(p) => p.theme.colors.gray.background || "#f5f5f5"};
   overflow: hidden;
 `;
 

@@ -248,8 +248,8 @@ export const Quiz = ({ caseData }: { caseData: any }) => {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          padding: "20px 0",
-          gap: "10px"
+          padding: "12px 0 8px",
+          gap: "4px"
         }}
       >
         <a href="/" style={{ display: "flex", justifyContent: "center" }}>
@@ -294,7 +294,9 @@ export const Quiz = ({ caseData }: { caseData: any }) => {
                 </div>
               ))}
             </Carousel>
-          ) : null}
+          ) : (
+            <QuizImage src={defaultQuizImage} alt={caseData?.title} />
+          )}
           <BackButton onClick={() => router.push("/")}>
             <ArrowBack style={{ color: "black" }} />
           </BackButton>

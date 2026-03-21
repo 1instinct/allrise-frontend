@@ -44,7 +44,7 @@ export const AdUnit: React.FC<AdUnitProps> = ({
       <ins
         ref={adRef}
         className="adsbygoogle"
-        style={{ display: "block", width: "100%", ...(style || {}) }}
+        style={{ display: "block", width: "100%" }}
         data-ad-client={process.env.NEXT_PUBLIC_ADSENSE_PUB_ID}
         data-ad-slot={slotId}
         data-ad-format={format}
